@@ -11,7 +11,7 @@ import { FlashProvider } from "./Context/FlashContext";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://bmsit-campus.onrender.com/";
 axios.defaults.withCredentials = true;
 
 
