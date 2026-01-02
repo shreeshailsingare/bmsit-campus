@@ -25,7 +25,7 @@ const uri= process.env.MONGO_URL;
 
 
 app.use(cors({
-    origin: "https://bmsit-campus-frontend.onrender.com/",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
