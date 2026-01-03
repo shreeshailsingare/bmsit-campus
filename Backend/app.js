@@ -28,10 +28,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-app.options("*", cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-}));
+
 
 app.use(express.json());
 
@@ -55,9 +52,9 @@ app.use("/auth", auths);
 app.use("/admin", admins);
 
 
-app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page Not Found"));
-});
+// app.all("*", (req, res, next) => {
+//   next(new ExpressError(404, "Page Not Found"));
+// });
 
 
 app.use((err, req, res, next) => {
