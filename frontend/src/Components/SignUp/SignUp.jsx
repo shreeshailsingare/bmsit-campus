@@ -14,7 +14,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/signup",
+        "/auth/signup",
         {
           role,
           name,
@@ -25,9 +25,17 @@ function SignUp() {
       );
 
       console.log(response.data);
+      setFlash({
+      type: "success",
+      message: "Signup successfully"
+    });
       navigate("/login"); 
     } catch (error) {
       console.error("Error signing up:", error.response?.data || error);
+      setFlash({
+      type: "danger",
+      message: err.response?.data?.error || "Failed to signup"
+    });
     }
   };
 
