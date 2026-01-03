@@ -27,11 +27,11 @@ function AdminProfilePage({ currentUser, setFlash }) {
   }, [deptId]);
 
   if (loading) {
-    return <p className="text-white text-center mt-5">Loading...</p>;
+    return <p className="text-white text-center mt-5 pt-5">Loading...</p>;
   }
 
   if (!admin) {
-    return <p className="text-danger text-center mt-5">Admin not found</p>;
+    return <p className="text-danger text-center mt-5 pt-5">Admin not found</p>;
   }
 
   return (

@@ -10,7 +10,7 @@ function ProfilePage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    axios.get("http://localhost:8080/auth/me", {
+    axios.get("/auth/me", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
