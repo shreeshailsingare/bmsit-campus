@@ -17,7 +17,7 @@ function DeleteAccount() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete("http://localhost:8080/user/account", {
+      await axios.delete("/user/account", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -18,7 +18,7 @@ function EditProfile() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/auth/me", {
+      .get("/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,7 +45,7 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    await axios.put("http://localhost:8080/user/profile", formData, {
+    await axios.put("/user/profile", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
