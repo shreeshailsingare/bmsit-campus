@@ -51,12 +51,6 @@ app.use("/user", users);
 app.use("/auth", auths);
 app.use("/admin", admins);
 
-
-// app.all("*", (req, res, next) => {
-//   next(new ExpressError(404, "Page Not Found"));
-// });
-
-
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
   res.status(statusCode).json({ success: false, error: message });

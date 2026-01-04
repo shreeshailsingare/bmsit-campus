@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useFlash } from "../../Context/FlashContext";
 
-
-
 function PostActions({ postId, onPostDeleted }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const { setFlash } = useFlash();
+
+
+  if (!postId) {
+  console.error("PostEditAction: postId missing");
+  return null;
+  }
 
   
 
@@ -76,17 +80,19 @@ function PostActions({ postId, onPostDeleted }) {
 
       {open && (
         <ul
-          className="dropdown-menu dropdown-menu-dark dropdown-menu-end show"
-          style={{ position: "absolute", right: 0, zIndex: 1055 }}
+          className="dropdown-menu  dropdown-menu-end show border-secondary"
+          style={{ position: "absolute", right: 0, zIndex: 1055,backgroundColor:'black' }}
         >
           <li>
+            
             <Link
               to={`/editpost/${postId}`}
-              className="dropdown-item"
+              className="dropdown-item text-white"
               onClick={() => setOpen(false)}
             >
               Edit
             </Link>
+
           </li>
 
           <li>

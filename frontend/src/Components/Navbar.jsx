@@ -20,13 +20,13 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
 
     return(
 
-    <nav className="navbar fixed-top text-white " style={{backgroundColor:'black'}}>
+    <nav className="navbar fixed-top text-white border-bottom border-secondary border-opacity-50 " style={{backgroundColor:'black'}}>
         <div className="container-fluid">
             <Link className="navbar-brand text-white fw-bold fs-2  nav-title" to="/">BMSIT Campus</Link>
               {user ? (
-                    <Link className="text-decoration-none text-white btn btn-outline-secondary btn-sm rounded-pill" onClick={handleLogout}>
+                    <button className="text-decoration-none text-white btn btn-outline-secondary btn-sm rounded-pill" onClick={handleLogout}>
                     Logout
-                    </Link>
+                    </button>
                 ) : (
                     <Link to="/login" className=" text-decoration-none pe-2 text-white btn btn-outline-secondary btn-sm rounded-pill">
                     Login

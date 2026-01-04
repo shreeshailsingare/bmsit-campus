@@ -7,7 +7,7 @@ function Departments() {
   const navigate = useNavigate();
 
   return (
-    <div className="container bg-dark py-5">
+    <div className="container  py-5">
       <div className="row mt-5">
         {DepartmentData.map((item, index) => (
           <CardButton

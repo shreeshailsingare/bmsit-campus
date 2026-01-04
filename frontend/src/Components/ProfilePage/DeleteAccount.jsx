@@ -41,8 +41,8 @@ function DeleteAccount() {
   };
 
   return (
-    <div className="container bg-dark min-vh-100 text-white d-flex align-items-center justify-content-center">
-      <div className="card bg-black text-white p-4" style={{ maxWidth: "500px" }}>
+    <div className="container  min-vh-100 text-white d-flex align-items-center justify-content-center">
+      <div className="card bg-dark text-white p-4" style={{ maxWidth: "500px" }}>
         <h4 className="text-danger mb-3">Delete Account</h4>
         <p>
           This action is <strong>permanent</strong>. All your data will be removed

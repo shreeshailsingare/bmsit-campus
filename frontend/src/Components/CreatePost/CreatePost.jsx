@@ -6,15 +6,11 @@ import { useFlash } from "../../Context/FlashContext";
 
 function CreatePost() {
   const navigate = useNavigate();
-
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-
+  const [loading, setLoading] = useState(false)
   const { setFlash } = useFlash();
-
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
 
   const token = localStorage.getItem("token");
@@ -26,7 +22,7 @@ const handleSubmit = async (e) => {
     setLoading(true); 
 
     const res = await axios.post(
-      "http://localhost:8080/posts",
+      "/posts",
       formData,
       {
         headers: {
@@ -53,7 +49,7 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="container bg-dark min-vh-100 text-white pt-5">
+    <div className="container  min-vh-100 text-white pt-5">
       <form onSubmit={handleSubmit} className="p-4">
         <div data-bs-theme="dark" className="d-flex justify-content-end">
           <Link to="/" className="btn-close"></Link>
@@ -62,7 +58,8 @@ const handleSubmit = async (e) => {
         <div className="mb-3">
           <label className="form-label">Enter text</label>
           <textarea
-            className="form-control bg-dark text-white"
+            className="form-control bg-dark text-white h-50"
+            
             rows="3"
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -76,25 +73,24 @@ const handleSubmit = async (e) => {
           onChange={(e) => setFile(e.target.files[0])}
         />
 
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end align-items-center  w-100">
           <button
-  className="btn btn-primary mt-4 w-25 d-flex align-items-center justify-content-center"
-  type="submit"
-  disabled={loading}
->
-  {loading ? (
-    <>
-      <span
-        className="spinner-border spinner-border-sm me-2"
-        role="status"
-      ></span>
-      Posting...
-    </>
-  ) : (
-    "Post"
-  )}
-</button>
-
+              className="btn btn-primary mt-4 w-50 d-flex px-3 align-items-center justify-content-center"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                  ></span>
+                  Posting...
+                </>
+              ) : (
+                "Post"
+              )}
+            </button>
         </div>
       </form>
     </div>

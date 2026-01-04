@@ -15,7 +15,7 @@ function DisplayPage() {
   }, []);
 
   return (
-    <div className="container bg-dark text-white min-vh-100 mt-0 py-4 ">
+    <div className="container text-white min-vh-100 mt-0 py-4 ">
 
       <div className="text-center mt-5 mb-3">
       </div>
@@ -26,7 +26,7 @@ function DisplayPage() {
           className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div className="carousel-indicators">
+          <div className="carousel-indicators ">
             <button
               type="button"
               data-bs-target="#carouselExampleSlidesOnly"
@@ -45,7 +45,7 @@ function DisplayPage() {
             ></button>
           </div>
 
-          <div className="carousel-inner rounded-4 ">
+          <div className="carousel-inner rounded-4  ">
             <div className="carousel-item active ">
               <img src="image5.jpeg" className="d-block w-100 hero-img" alt="1" />
             </div>

@@ -59,8 +59,10 @@ const postSchema = new Schema({
   },
 
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }], 
-  comments: [commentSchema],                             
+  comments: [commentSchema], 
+  saves: [{ type: Schema.Types.ObjectId, ref: "User" }],                            
   shares: [{ type: Schema.Types.ObjectId, ref: 'User' }], 
+  
 },
 { timestamps: true });
 

@@ -1,5 +1,6 @@
-import PostActionOne from "./PostActionOne";
-import PostLikesComments from "./PostActionTwo";
+import PostEditAction from "./PostEditAction";
+import PostLikesComments from "./PostLikeCommentAction";
+import TruncatedText from "./TruncatedText";
 
 
 function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
@@ -19,7 +20,7 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
       <div className="row mt-2">
         <div className="col-2 pe-0">
           <img
-            src={post.author?.profile_image?.url}
+            src={post.author?.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
             className="rounded-circle"
             width="42"
             height="42"
@@ -28,8 +29,8 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
         </div>
 
         <div className="col-10 ps-0">
-          <div className=" d-flex align-items-center">
-            <div className="d-flex  col-11">
+          <div className=" d-flex align-items-center justify-content-center">
+            <div className="d-flex  align-items-center  col-11">
             <h6 className="fw-bold mb-0">{post.author?.name}</h6>
             <span className="text-light opacity-75 px-2">
               @{post.author?.username}
@@ -39,13 +40,13 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
             </small>
           </div>
            <div className="col-1 d-flex justify-content-end">
-              <PostActionOne post={post} onPostUpdate={onPostUpdate} />
+             {currentUser && currentUser.username == post.author.username &&  <PostEditAction postId={post._id} onPostUpdate={onPostUpdate} />}
+              
             </div>
           </div>
             
-          
+          <TruncatedText text={post.text} limit={150} />
 
-          <p className="mt-1 mb-2">{post.text}</p>
 
           {post.image?.url && (
             <div className="post-media-wrapper mb-3">

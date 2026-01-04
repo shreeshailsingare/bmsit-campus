@@ -11,14 +11,15 @@ function EditProfile() {
   const [profileImage, setProfileImage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+
 
   const { setFlash } = useFlash();
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get("/auth/me", {
+    axios.get("/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -26,6 +27,9 @@ function EditProfile() {
       .then((res) => {
         setName(res.data.name || "");
         setUsername(res.data.username || "");
+        setProfileImageUrl(
+          res.data.profile_image?.url || ""
+        );
         setLoading(false);
       })
       .catch((err) => {
@@ -71,7 +75,7 @@ const handleSubmit = async (e) => {
   }
 
   return (
-    <div className=" bg-dark min-vh-100">
+    <div className="  min-vh-100">
       <div className="container mt-5 d-flex justify-content-center">
         <div
           className=" border-0 mt-5 overflow-hidden"
@@ -80,25 +84,28 @@ const handleSubmit = async (e) => {
 
             <div className="container text-center">
               <img
-                src="/image1.jpg"
-                alt="profile"
-                className="rounded-circle  "
-                width="130"
-                height="130"
+                  src={
+                    profileImageUrl ||
+                    "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                  }
+                  alt="profile"
+                  className="rounded-circle"
+                  width="130"
+                  height="130"
+                  style={{ objectFit: "cover" }}
               />
-           </div>
-    
 
-          
+           </div>
+       
           <div className="  pt-4 px-4 pb-4 ">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label text-white small fw-bold">
+                <label className="form-label text-light opacity-75 small fw-bold">
                   First Name
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control text-white bg-dark"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -106,26 +113,23 @@ const handleSubmit = async (e) => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label text-white small fw-bold">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  className="form-control "
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label text-white small fw-bold">
+                <label className="form-label text-light opacity-75 small fw-bold">
                   Profile Image
                 </label>
-                <input
+               <input
                   type="file"
-                  className="form-control"
-                  onChange={(e) => setProfileImage(e.target.files[0])}
+                  className="form-control bg-dark text-white"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    setProfileImage(file);
+
+                    if (file) {
+                      setProfileImageUrl(URL.createObjectURL(file));
+                    }
+                  }}
                 />
+
               </div>
 
               <div className="d-flex justify-content-end mt-4 border-top pt-3">

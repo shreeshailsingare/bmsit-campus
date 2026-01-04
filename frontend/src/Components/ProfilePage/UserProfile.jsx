@@ -4,9 +4,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 
 function ProfilePage() {
-  const [user, setUser] = useState(null);
-
-  
+  const [user, setUser] = useState(null); 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -24,15 +22,15 @@ function ProfilePage() {
   }
 
   return (
-    <div className="container bg-dark   min-vh-100 mt-0 py-5 ">
+    <div className="container    min-vh-100 mt-0 py-5 ">
 
       <div className="row justify-content-center text-white text-center mt-5 mb-4">
         <div className="col-12">
           <img
-            src={user.profile_image?.url || "/image1.jpg"}
+            src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
             className="rounded-circle mb-2"
-            width="100"
-            height="100"
+            width="125"
+            height="125"
             alt="profile"
           />
           
@@ -44,22 +42,26 @@ function ProfilePage() {
 
       <div className="row justify-content-center ">
         <div className="col-12 col-md-6 ">
-         <div className="list-group list-group-flush ">
-             <a href="#" className="list-group-item text-white bg-dark border-0">
-                <i className="fa-regular fa-folder me-2"></i>
-                Saved Post 
+         <div className="list-group list-group-flush  " >
+          <Link
+              to="/profile/saved"
+              className="list-group-item text-white border-0"
+              style={{ backgroundColor: "black" }}
+            >
+              <i className="fa-regular fa-folder me-2"></i>
+              Saved Posts
+            </Link>
 
-            </a>
-            <Link to='/profile/edit' className="list-group-item border-0  text-white bg-dark">
+            <Link to='/profile/edit' className="list-group-item border-0  text-white "style={{backgroundColor:'black'}}>
                 <i className="fa-regular fa-pen-to-square me-2"> </i>
                  Edit 
             </Link>
             
-            <Link to='/profile/delete' className="list-group-item border-0 text-white bg-dark">
+            <Link to='/profile/delete' className="list-group-item border-0 text-white " style={{backgroundColor:'black'}}>
                 <i className="fa-solid fa-trash pe-2"></i>
                 Delete Account
             </Link>
-            <a href="#" className="list-group-item text-white bg-dark ">
+            <a href="#" className="list-group-item text-white  " style={{backgroundColor:'black'}}>
                 <i className="fa-solid fa-circle-half-stroke pe-2"></i>
                 Theme
             </a>

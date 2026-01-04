@@ -4,11 +4,10 @@ const FlashContext = createContext();
 
 export const FlashProvider = ({ children }) => {
   const [flash, setFlash] = useState({
-    type: "",     // success | danger | warning | info
+    type: "",     
     message: ""
   });
 
-  // auto-hide after 3 seconds
   useEffect(() => {
     if (flash.message) {
       const timer = setTimeout(() => {

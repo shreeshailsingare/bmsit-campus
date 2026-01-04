@@ -35,7 +35,7 @@ function AdminProfilePage({ currentUser, setFlash }) {
   }
 
   return (
-    <div className="bg-dark min-vh-100 mt-5 pt-5">
+    <div className=" min-vh-100 mt-5 pt-3">
 
       <div className="position-relative">
         <img
@@ -45,7 +45,7 @@ function AdminProfilePage({ currentUser, setFlash }) {
         />
 
         <img
-          src={admin.profile_image?.url || "/default-profile.png"}
+          src={admin.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
           className="rounded-circle border border-3 border-dark position-absolute"
           style={{
             width: "110px",
@@ -57,14 +57,14 @@ function AdminProfilePage({ currentUser, setFlash }) {
         />
       </div>
 
-      <div className="container pt-5 mt-4">
+      <div className="container  py-5 mt-4">
         <h5 className="fw-bold text-white">{admin.name}</h5>
-        <p className="text-muted">@{admin.username}</p>
+        <p className="text-light opacity-75">@{admin.username}</p>
 
         <hr className="text-secondary" />
 
         {posts.length === 0 ? (
-          <p className="text-muted text-center">No posts yet</p>
+          <p className="text-light text-center">No posts yet</p>
         ) : (
           posts.map((post) => (
             <PostItem

@@ -6,27 +6,31 @@ import { useFlash } from "../../Context/FlashContext";
 function EditPost() {
   const { id } = useParams();       
   const navigate = useNavigate();
-
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const { setFlash } = useFlash();
+  const [submitting, setSubmitting] = useState(false);
 
- useEffect(() => {
+useEffect(() => {
+  if (!id) {
+    setFlash({
+      type: "danger",
+      message: "Invalid post ID"
+    });
+    navigate("/");
+    return;
+  }
+
   const fetchPost = async () => {
     try {
       const res = await axios.get(`/posts/${id}`);
-
-      console.log("FULL RESPONSE:", res.data);
       setText(res.data.text);
-        
     } catch (err) {
-      console.error(err);
-       setFlash({
-          type: "danger",
-          message: err.response?.data?.error || "Failed to create post"
-        });
+      setFlash({
+        type: "danger",
+        message: "Failed to load post"
+      });
     } finally {
       setLoading(false);
     }
@@ -35,15 +39,18 @@ function EditPost() {
   fetchPost();
 }, [id]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!text.trim()) {
-      alert("Post text cannot be empty");
+       setFlash({
+          type: "danger",
+          message: "Post text cannot be empty"
+        });
       return;
     }
 
-
+    setSubmitting(true);
     const formData = new FormData();
     formData.append("text", text);
     if (file) formData.append("media", file);
@@ -65,16 +72,26 @@ function EditPost() {
       console.error(err);
        setFlash({
           type: "danger",
-          message: err.response?.data?.error || "Failed to create post"
+          message: err.response?.data?.error || "Failed to update post"
         });
+    }finally {
+      setSubmitting(false);
     }
   };
 
-  if (loading) return <p className="text-center mt-5">Loading...</p>;
+    if (loading) {
+      return (
+        <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+          <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      );
+    }
 
   return (
-    <div className="container bg-dark min-vh-100 text-white pt-5">
-      <form className="p-4" onSubmit={handleSubmit}>
+    <div className="container  min-vh-100 text-white pt-5">
+      <form className="p-2" onSubmit={handleSubmit}>
         <div data-bs-theme="dark" className="d-flex justify-content-end">
           <Link to="/" className="btn-close"></Link>
         </div>
@@ -82,12 +99,12 @@ function EditPost() {
         <div className="mb-3">
           <label className="form-label">Edit text</label>
           <textarea
-            className="form-control  bg-dark text-white border-secondary"
-            
+            className="form-control  bg-dark text-white border-secondary"        
             rows="3"
             value={text}
             onChange={(e) => setText(e.target.value)}
             required
+            style={{height:'150px'}}
           />
         </div>
 
@@ -101,9 +118,21 @@ function EditPost() {
         </div>
 
         <div className="d-flex justify-content-end">
-          <button className="btn btn-primary mt-4 w-40" type="submit">
-            Update
-          </button>
+          <button
+             className="btn btn-primary mt-4 w-40"
+             type="submit"
+             disabled={submitting}
+            >
+        {submitting ? (
+            <>
+              <span className="spinner-border spinner-border-sm me-2"></span>
+                Updating...
+            </>
+            ) : (
+                "Update"
+              )}
+            </button>
+
         </div>
       </form>
     </div>

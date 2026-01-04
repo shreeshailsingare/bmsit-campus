@@ -3,13 +3,20 @@ import React from "react";
 import Event from "./Event";
 import Posts from "./Posts";
 import PostButton from '../CreatePost/PostButton.jsx';
+import { useContext } from "react";
+import { AuthContext } from "../SignUp/AuthContext";
 
-function HomePage({ currentUser, setFlash }) {
+function HomePage({ setFlash }) {
+    const { user } = useContext(AuthContext);
+    console.log("ROLE FROM UI:", user?.role);
+
+
     return(
        <>
        <Event/>
-       <Posts currentUser={currentUser} setFlash={setFlash}/>
-       <PostButton currentUser={currentUser}/>
+       <Posts currentUser={user} setFlash={setFlash}/>
+  
+             {user?.role?.toLowerCase() === "admin" && <PostButton />}
        </>
     )
 }

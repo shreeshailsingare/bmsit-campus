@@ -12,8 +12,6 @@ module.exports.isAdmin = (req, res, next) => {
   });
 };
 
-
-
 module.exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 

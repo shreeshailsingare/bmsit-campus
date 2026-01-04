@@ -18,7 +18,7 @@ function Posts({ currentUser, setFlash }) {
   };
 
   return (
-    <div className="pb-5 mt-3 border-top border-secondary">
+    <div className="pb-5 mt-3 border-top border-secondary  border-opacity-50">
       {posts.map(post => (    
         <PostItem key={post._id}   post={post} onPostUpdate={updatePost} currentUser={currentUser} setFlash={setFlash} />
       ))}

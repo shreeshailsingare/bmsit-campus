@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useFlash } from "../../Context/FlashContext";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -9,9 +10,12 @@ function SignUp() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setFlash } = useFlash();
+  const [loading, setLoading] = useState(false);
 
   const signUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         "/auth/signup",
@@ -30,17 +34,19 @@ function SignUp() {
       message: "Signup successfully"
     });
       navigate("/login"); 
-    } catch (error) {
-      console.error("Error signing up:", error.response?.data || error);
+    } catch (err) {
+      console.log("Error signing up:", err.response?.data || err);
       setFlash({
       type: "danger",
       message: err.response?.data?.error || "Failed to signup"
     });
+    }finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container-fluid min-vh-100 bg-dark d-flex justify-content-center align-items-center">
+    <div className="container-fluid min-vh-100  d-flex justify-content-center align-items-center">
       <div
         className="card text-light shadow-lg border-0"
         style={{ maxWidth: "400px", width: "100%", backgroundColor: "#1e1e1e" }}
@@ -101,13 +107,13 @@ function SignUp() {
                 required
               />
             </div>
-
-            <button
+             <button
               type="submit"
-              className="btn w-100 mt-2 text-white"
+              className="btn w-100 text-white"
               style={{ backgroundColor: "#ff5722" }}
+              disabled={loading}
             >
-              Sign Up
+              {loading ? "signing..." : "SignUp"}
             </button>
 
             <div className="d-flex align-items-center justify-content-around mt-3">

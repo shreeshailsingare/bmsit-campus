@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const PostLikesComments = ({ post, currentUser, onPostUpdate, setFlash }) => {
-
+console.log(currentUser)
 const formatTimeAgo = (date) => {
   const seconds = Math.floor((Date.now() - new Date(date)) / 1000);
   if (seconds < 60) return "now";
@@ -14,9 +14,12 @@ const formatTimeAgo = (date) => {
   return `${Math.floor(hours / 24)}d`;
 };
 
+  const userId = currentUser?._id;
+  const isSaved = post.saves?.some(id => id.toString() === userId);
+
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [commentText, setCommentText] = useState("");
-  const userId = currentUser?._id;
+  
   const isLiked = post.likes?.some(
     (id) => id.toString() === userId
   );
@@ -51,7 +54,7 @@ const formatTimeAgo = (date) => {
       console.error("Like failed", err);
        setFlash({
       type: "danger",
-      message: err.response?.data?.error || "Failed to like post"
+      message: err.response?.data?.error || "please login to like"
     });
     }
   };
@@ -98,8 +101,84 @@ const formatTimeAgo = (date) => {
     }
   };
 
+  const handleShare = async () => {
+  const token = localStorage.getItem("token");
 
-  return (
+  if (!currentUser || !token) {
+    setFlash?.({
+      type: "danger",
+      message: "Please login to share posts",
+    });
+    return;
+  }
+
+  const postUrl = `${window.location.origin}/posts/${post._id}`;
+
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "BMSIT Campus",
+        text: "Check out this post 👇",
+        url: postUrl,
+      });
+    } else {
+      await navigator.clipboard.writeText(postUrl);
+      setFlash?.({
+        type: "success",
+        message: "Post link copied",
+      });
+    }
+
+    await axios.post(
+      `/posts/${post._id}/share`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  } catch (err) {
+    setFlash?.({
+      type: "danger",
+      message: "Failed to share post",
+    });
+  }
+};
+
+//save handler
+const handleSave = async () => {
+  if (!currentUser) {
+    setFlash?.({
+      type: "danger",
+      message: "Please login to save posts",
+    });
+    return;
+  }
+
+  try {
+    const res = await axios.post(
+      `/posts/${post._id}/save`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    onPostUpdate({
+      ...post,
+      saves: res.data.saves,
+    });
+
+  } catch (err) {
+    setFlash?.({
+      type: "danger",
+      message: "Failed to save post",
+    });
+  }
+};
+
+return (
     <>
  <div className="d-flex justify-content-between text-light opacity-75 small mb-2 px-1">
    
@@ -113,17 +192,38 @@ const formatTimeAgo = (date) => {
         onClick={toggleComments}
         style={{ cursor: "pointer" }}
         >
-            <i className="fa-regular fa-comment pe-2"></i> {post.comments?.length || 0}
+        <i className="fa-regular fa-comment pe-2"></i> {post.comments?.length || 0}
     </span>
-    <span><i className="fa-regular fa-folder pe-2"></i>{post.save?.length || 0}</span>
-    <span> <i className="fa-solid fa-share pe-2"></i>{post.shares?.length || 0}</span>
+    {/* <span><i className="fa-regular fa-folder pe-2"></i>{post.save?.length || 0}</span> */}
+    <span
+  role="button"
+  onClick={handleSave}
+  style={{ cursor: "pointer" }}
+>
+  <i
+    className={`fa-${isSaved ? "solid" : "regular"} fa-folder pe-2`}
+    style={{ color: isSaved ? "#facc15" : "" }}
+  ></i>
+  {post.saves?.length || 0}
+</span>
+
+    <span
+      role="button"
+      onClick={handleShare}
+      style={{ cursor: "pointer" }}
+    >
+      <i className="fa-solid fa-share pe-2"></i>
+      {post.shares?.length || 0}
+    </span>
+
 </div>
 <div>
    {showCommentBox && (
   <>
     <div className="d-flex align-items-center gap-2 mt-2">
+      
       <img
-        src={post.author?.profile_image?.url ||
+        src={currentUser?.profile_image?.url ||
               "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
         alt="profile"
         className="rounded-circle"

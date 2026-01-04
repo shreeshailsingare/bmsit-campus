@@ -173,6 +173,38 @@ module.exports.editPost=async (req, res) => {
        
    };
 
+ module.exports.postSaves = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const userId = req.user.id;
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    const alreadySaved = post.saves.some(
+      id => id.toString() === userId
+    );
+
+    if (alreadySaved) {
+      post.saves.pull(userId);
+    } else {
+      post.saves.push(userId);
+    }
+
+    await post.save();
+
+    res.json({
+      action: alreadySaved ? "unsaved" : "saved",
+      saves: post.saves,
+    });
+
+  } catch (err) {
+    console.error("Save post error:", err);
+    res.status(500).json({ error: "Failed to save post" });
+  }
+};
+
    module.exports.postCommentLike=async (req, res) => {
        const userId = req.user.id;
        const { postId, commentId } = req.params;
@@ -261,3 +293,18 @@ module.exports.editPost=async (req, res) => {
            }
        });
    }
+
+
+    module.exports.ShowSavedPost=async (req, res) => {
+      try {
+        const userId = req.user.id;
+    
+        const savedPosts = await Post.find({ saves: userId })
+          .populate("author", "name username profile_image")
+          .sort({ createdAt: -1 });
+    
+        res.json(savedPosts);
+      } catch (err) {
+        res.status(500).json({ error: "Failed to fetch saved posts" });
+      }
+    };

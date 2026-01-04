@@ -21,7 +21,7 @@ function Footer() {
   };
 
   return (
-    <div className="container border-top border-secondary border-opacity-30 text-white fixed-bottom bg-dark" style={{ height: "53px" }}>
+    <div className="container border-top border-secondary border-opacity-50 text-white fixed-bottom " style={{ height: "53px",backgroundColor:'black' }}>
       <div className="row h-100 align-items-center text-center">
         <div className="col">
           <Link className="navbar-brand fs-5" to="/">
