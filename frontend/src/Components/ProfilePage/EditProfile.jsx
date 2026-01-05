@@ -5,25 +5,17 @@ import { useFlash } from "../../Context/FlashContext";
 
 function EditProfile() {
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [profileImage, setProfileImage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState("");
-
-
   const { setFlash } = useFlash();
 
   const token = localStorage.getItem("token");
-
   useEffect(() => {
-    axios.get("/auth/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    axios.get("/auth/me", {headers: { Authorization: `Bearer ${token}`,},})
       .then((res) => {
         setName(res.data.name || "");
         setUsername(res.data.username || "");
@@ -33,7 +25,7 @@ function EditProfile() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
         alert("Failed to load profile");
       });
   }, [token]);

@@ -7,7 +7,6 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
   const { setFlash } = useFlash();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,18 +17,10 @@ function Login() {
 
     try {
       await login(username, password);
-
-      setFlash({
-        type: "success",
-        message: "Login successful",
-      });
-
+      setFlash({type: "success",message: "Login successful",});
       navigate("/");
     } catch (err) {
-      setFlash({
-        type: "danger",
-        message: err.response?.data?.error || "Login failed",
-      });
+      setFlash({type: "danger", message: err.response?.data?.error || "Login failed",});
     } finally {
       setLoading(false);
     }

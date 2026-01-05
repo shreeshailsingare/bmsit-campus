@@ -7,13 +7,9 @@ function Footer() {
   const { user } = useContext(AuthContext);
   const { setFlash } = useFlash();
   const navigate = useNavigate();
-
   const handleProfileClick = () => {
     if (!user) {
-      setFlash({
-        type: "warning",
-        message: "Please login to view your profile 🔐",
-      });
+      setFlash({type: "warning", message: "Please login",});
       navigate("/login");
     } else {
       navigate("/profile");

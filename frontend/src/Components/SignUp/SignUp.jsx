@@ -5,7 +5,6 @@ import { useFlash } from "../../Context/FlashContext";
 
 function SignUp() {
   const navigate = useNavigate();
-
   const [role, setRole] = useState("User");
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -17,29 +16,11 @@ function SignUp() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        "/auth/signup",
-        {
-          role,
-          name,
-          username,
-          password,
-        },
-        { withCredentials: true }
-      );
-
-      console.log(response.data);
-      setFlash({
-      type: "success",
-      message: "Signup successfully"
-    });
+      const response = await axios.post("/auth/signup",{role,name,username,password,},{ withCredentials: true });
+      setFlash({type: "success",message: "Signup successfully"});
       navigate("/login"); 
-    } catch (err) {
-      console.log("Error signing up:", err.response?.data || err);
-      setFlash({
-      type: "danger",
-      message: err.response?.data?.error || "Failed to signup"
-    });
+    }catch (err) {
+      setFlash({type: "danger",message: err.response?.data?.error || "Failed to signup"});
     }finally {
       setLoading(false);
     }
@@ -54,10 +35,9 @@ function SignUp() {
         <div data-bs-theme="dark" className="d-flex justify-content-end mt-3 me-3">
           <Link to="/" type="button" className="btn-close" aria-label="Close" />
         </div>
-
+        
         <div className="card-body p-4">
           <h3 className="text-center fw-bold mb-2">Sign Up</h3>
-
           <form onSubmit={signUp}>
             <div className="mb-3">
               <label className="form-label text-secondary">Role</label>

@@ -24,15 +24,13 @@ import FlashMessage from "./Components/Common/FlashMessage";
 
 function App() {  
     const { flash, setFlash } = useFlash();
-
   return (
      <div className='min-vh-100 ' style={{backgroundColor:'black'}} >
       <Navbar  />
         <FlashMessage
         flash={flash}
         clearFlash={() => setFlash({ type: "", message: "" })}
-        />
-        
+        /> 
         <Routes> 
           <Route path="/" element={<HomePage  setFlash={setFlash}  />} /> 
           <Route path="/display" element={<DisplayPage/>} /> 
@@ -50,11 +48,7 @@ function App() {
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/login" element={<Login/>} /> 
           <Route path="/signup" element={<SignUp/>} /> 
-        </Routes>
-       
-    
-        
-        
+        </Routes>      
       <Footer/>
     </div>
   )

@@ -4,39 +4,24 @@ import axios from "axios";
 import { useFlash } from "../../Context/FlashContext";
 
 function DeleteAccount() {
-    const { setFlash } = useFlash();
-
+  const { setFlash } = useFlash();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
-      "⚠️ This will permanently delete your account. Are you sure?"
+      " This will permanently delete your account. Are you sure?"
     );
 
     if (!confirmDelete) return;
 
     try {
-      await axios.delete("/user/account", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      await axios.delete("/user/account", {headers: { Authorization: `Bearer ${token}`, },});
       localStorage.removeItem("token");
-
-       setFlash({
-      type: "success",
-      message: "Your account has been deleted."
-    });
-
+      setFlash({type: "success",message: "Your account has been deleted."});
       navigate("/login");
     } catch (err) {
-      console.error(err);
-       setFlash({
-      type: "danger",
-      message: err.response?.data?.error || "Failed to delete account"
-    });
+      setFlash({type: "danger",message: err.response?.data?.error || "Failed to delete account"});
     }
   };
 

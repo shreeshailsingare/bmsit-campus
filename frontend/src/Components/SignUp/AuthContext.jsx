@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -9,18 +8,12 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (!token) {
       setLoading(false);
       return;
     }
 
-    axios
-      .get("/auth/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    axios.get("/auth/me", {headers: { Authorization: `Bearer ${token}`,},})
       .then((res) => {
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
@@ -33,22 +26,16 @@ export const AuthProvider = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
+  // LOGIN
   const login = async (username, password) => {
     const res = await axios.post("/auth/login", { username, password });
-
     localStorage.setItem("token", res.data.token);
-
-    const me = await axios.get("/auth/me", {
-      headers: {
-        Authorization: `Bearer ${res.data.token}`,
-      },
-    });
-
+    const me = await axios.get("/auth/me", {headers: {Authorization: `Bearer ${res.data.token}`,},});
     localStorage.setItem("user", JSON.stringify(me.data));
     setUser(me.data);
   };
 
-  // ✅ LOGOUT
+  // LOGOUT
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
