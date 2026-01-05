@@ -242,7 +242,7 @@ return (
     </div>
     <div className="mt-3 container  overflow-auto" style={{ maxHeight: "150px" }}>
       {post.comments?.length === 0 && (
-        <p className="text-muted small">No comments yet</p>
+        <p className="text-light opacity-80 small">No comments yet</p>
       )}
 
       {post.comments?.map((comment) => (

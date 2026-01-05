@@ -55,7 +55,7 @@ const updatePost = (updatedPost) => {
     return <p className="text-white text-center mt-5 pt-5">No saved posts</p>;
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 pt-2">
       {posts.map(post => (
         <PostItem
           key={post._id}

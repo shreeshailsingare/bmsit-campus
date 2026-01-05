@@ -11,8 +11,8 @@ import { FlashProvider } from "./Context/FlashContext";
 
 import axios from "axios";
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
-// axios.defaults.baseURL = "http://localhost:8080"
+// axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.baseURL = "http://localhost:8080"
 axios.defaults.withCredentials = true;
 
 

@@ -16,7 +16,7 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
   };
 
   return (
-    <div className="container pt-2 px-3 text-white">
+    <div className="container pt-2 ps-2 pe-3 text-white">
       <div className="row mt-2">
         <div className="col-2 pe-0">
           <img

@@ -57,12 +57,15 @@ function AdminProfilePage({ currentUser, setFlash }) {
         />
       </div>
 
-      <div className="container  py-5 mt-4">
+      <div className="container px-0  pt-5 mt-4">
+        <div className="ps-3"> 
         <h5 className="fw-bold text-white">{admin.name}</h5>
         <p className="text-light opacity-75">@{admin.username}</p>
-
+      </div>
         <hr className="text-secondary" />
+      </div>
 
+      <div>
         {posts.length === 0 ? (
           <p className="text-light text-center">No posts yet</p>
         ) : (

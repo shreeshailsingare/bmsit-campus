@@ -32,6 +32,7 @@ function App() {
         flash={flash}
         clearFlash={() => setFlash({ type: "", message: "" })}
         />
+        
         <Routes> 
           <Route path="/" element={<HomePage  setFlash={setFlash}  />} /> 
           <Route path="/display" element={<DisplayPage/>} /> 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/login" element={<Login/>} /> 
           <Route path="/signup" element={<SignUp/>} /> 
         </Routes>
+       
     
         
         
