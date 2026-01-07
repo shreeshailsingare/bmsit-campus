@@ -102,3 +102,71 @@ select {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.carousel-img-wrapper {
+  aspect-ratio: 4 / 3;   
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+}
+
+
+/* pdf */
+.gmail-pdf {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #1e1e1e;
+  border: 1px solid #2f2f2f;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  max-width: 420px;
+  transition: all 0.25s ease;
+}
+
+.gmail-pdf:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.pdf-icon {
+  width: 42px;
+  height: 42px;
+  background: #ff4d4d;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.pdf-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.pdf-name {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-sub {
+  font-size: 12px;
+  color: #b5b5b5;
+}
+
+.pdf-action {
+  font-size: 14px;
+  color: #b5b5b5;
+}

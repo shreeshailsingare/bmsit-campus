@@ -27,6 +27,7 @@ function EditProfile() {
       .catch((err) => {
         // console.error(err);
         alert("Failed to load profile");
+        etFlash({type: "danger", message: err.response?.data?.error || "Login failed",});
       });
   }, [token]);
 const handleSubmit = async (e) => {

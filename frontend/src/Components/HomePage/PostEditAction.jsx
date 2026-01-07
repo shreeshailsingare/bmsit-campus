@@ -6,17 +6,12 @@ import { useFlash } from "../../Context/FlashContext";
 function PostActions({ postId, onPostDeleted }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-
   const { setFlash } = useFlash();
 
-
   if (!postId) {
-  console.error("PostEditAction: postId missing");
+  // console.error("PostEditAction: postId missing");
   return null;
   }
-
-  
-
 
   const handleToggle = (e) => {
     e.stopPropagation();
@@ -37,17 +32,9 @@ function PostActions({ postId, onPostDeleted }) {
       });
       onPostDeleted(postId);
       setOpen(false);
-         setFlash({
-          type: "success",
-          message: "Post deleted successfully"
-        });
+      setFlash({ type: "success", message: "Post deleted successfully" });
     } catch (err) {
-      console.error(err);
-      setFlash({
-      type: "danger",
-      message: err.response?.data?.error || "Failed to delete post"
-    });
-
+      setFlash({type: "danger",message: err.response?.data?.err || "Failed to delete post"});
     }
   };
 
@@ -60,9 +47,7 @@ function PostActions({ postId, onPostDeleted }) {
         setOpen(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };

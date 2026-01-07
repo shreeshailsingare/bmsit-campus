@@ -59,16 +59,31 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
                 <video src={post.image.url} className="post-media" controls />
               )}
 
+
               {post.image.contentType === "application/pdf" && (
-                <a
-                  href={post.image.url}
-                  target="_blank"
-                  className="pdf-preview"
-                  rel="noreferrer"
-                >
-                  <i className="fa-regular fa-file-pdf text-white fs-1 me-2"></i> View PDF
-                </a>
-              )}
+              <a
+                href={post.image.url}
+                target="_blank"
+                rel="noreferrer"
+                className="gmail-pdf"
+              >
+                <div className="pdf-icon">
+                  <i className="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div className="pdf-info">
+                  <span className="pdf-name">
+                    {post.image.originalname || "Document.pdf"}
+                  </span>
+                  <span className="pdf-sub">PDF • Click to view</span>
+                </div>
+
+                <div className="pdf-action">
+                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+              </a>
+            )}
+
             </div>
           )}
 
