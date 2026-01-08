@@ -19,19 +19,19 @@ function Event() {
   <div className="carousel-inner ">
     <div className="carousel-item active">
   <div className="carousel-img-wrapper">
-    <img src="slide1.jpg" alt="slide" />
+    <img src="slide7.jpg" alt="slide" />
   </div>
 </div>
 
 <div className="carousel-item">
   <div className="carousel-img-wrapper ">
-    <img src="slide4.jpeg" alt="slide" />
+    <img src="slide6.jpg" alt="slide" />
   </div>
 </div>
 
 <div className="carousel-item">
   <div className="carousel-img-wrapper ">
-    <img src="slide3.jpg" alt="slide" />
+    <img src="slide5.jpg" alt="slide" />
   </div>
 </div>
 
