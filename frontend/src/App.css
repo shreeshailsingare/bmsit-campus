@@ -170,3 +170,142 @@ select {
   font-size: 14px;
   color: #b5b5b5;
 }
+
+
+/* multiple images */
+.media-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.media-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.media-item {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
+/* wrapper */
+.carousel-wrapper {
+  position: relative;
+}
+
+/* scroll container */
+.media-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.media-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.media-item {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  max-height: 500px;      
+  height: auto;
+  object-fit: contain;    
+  background: #000;
+  border-radius: 12px;
+  object-fit: cover;
+max-height: 500px;
+
+}
+
+
+/* dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #777;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* counter (1/4) */
+.carousel-counter {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+
+.pdf-card {
+  width: 100%;
+  height: auto;
+  background: #1e1e1e;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.pdf-icon {
+  font-size: 40px;
+}
+
+.pdf-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+@media (max-width: 576px) {
+  .media-item img,
+  .media-item video {
+    max-height: 360px;
+  }
+}
+
+.campus-title {
+  color: #981919;              /* initial color */
+  transition: color 0.4s ease;
+  transition-delay: 0.5s;      /* delay before color change */
+}
+
+.campus-title.active {
+  color: #7ad5a8;              /* final color */
+}
+
+

@@ -2,33 +2,57 @@ const mongoose = require("mongoose");
 const Post=require("../models/Post.js");
 const ExpressError = require("../utils/ExpressError.js");
 
+// module.exports.createPost = async (req, res) => {
+//     const { text } = req.body; 
+//     const uploadedFile = req.file; 
+
+//     let mediaObject = {};
+//     if (uploadedFile) {
+//   mediaObject.image = {
+//     url: uploadedFile.path,          
+//     filename: uploadedFile.filename,
+//     contentType: uploadedFile.mimetype   
+//   };
+// }
+
+//     const newPost = new Post({
+//       author: req.user.id,
+//       text,
+//       ...mediaObject, 
+//     });
+//     if (!text || !text.trim()) {
+//       throw new ExpressError(400, "Post text is required");
+//     }
+//     const savedPost = await newPost.save();
+//     res.status(201).json({ 
+//         message: "Post created successfully!", 
+//         post: savedPost 
+//     });
+// };
+
 module.exports.createPost = async (req, res) => {
-    const { text } = req.body; 
-    const uploadedFile = req.file; 
+  const { text } = req.body;
 
-    let mediaObject = {};
-    if (uploadedFile) {
-  mediaObject.image = {
-    url: uploadedFile.path,          
-    filename: uploadedFile.filename,
-    contentType: uploadedFile.mimetype   
-  };
-}
+  if (!text || !text.trim()) {
+    throw new ExpressError(400, "Post text is required");
+  }
 
-    const newPost = new Post({
-      author: req.user.id,
-      text,
-      ...mediaObject, 
-    });
-    if (!text || !text.trim()) {
-      throw new ExpressError(400, "Post text is required");
-    }
-    const savedPost = await newPost.save();
-    res.status(201).json({ 
-        message: "Post created successfully!", 
-        post: savedPost 
-    });
+  const media = req.files?.map(file => ({
+    url: file.path,
+    filename: file.filename,
+    contentType: file.mimetype
+  }));
+
+  const newPost = new Post({
+    author: req.user.id,
+    text,
+    media
+  });
+
+  const savedPost = await newPost.save();
+  res.status(201).json(savedPost);
 };
+
 
 
 module.exports.showPosts=async (req, res) => {

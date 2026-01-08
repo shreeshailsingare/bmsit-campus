@@ -1,9 +1,10 @@
+import { useState, useRef } from "react";
 import PostEditAction from "./PostEditAction";
 import PostLikesComments from "./PostLikeCommentAction";
 import TruncatedText from "./TruncatedText";
 
 
-function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
+function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
 
   const formatTimeAgo = (time) => {
     const seconds = Math.floor((new Date() - new Date(time)) / 1000);
@@ -14,6 +15,16 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
     if (hours < 24) return `${hours}h`;
     return `${Math.floor(hours / 24)}d`;
   };
+
+  const [activeIndex, setActiveIndex] = useState(0);
+const scrollRef = useRef(null);
+
+const handleScroll = () => {
+  const el = scrollRef.current;
+  const index = Math.round(el.scrollLeft / el.offsetWidth);
+  setActiveIndex(index);
+};
+
 
   return (
     <div className="container pt-2 ps-2 pe-3 text-white">
@@ -40,60 +51,80 @@ function PostItem({ post, onPostUpdate, currentUser, setFlash }) {
             </small>
           </div>
            <div className="col-1 d-flex justify-content-end">
-             {currentUser && currentUser.username == post.author.username &&  <PostEditAction postId={post._id} onPostUpdate={onPostUpdate} />}
-              
+             {currentUser && currentUser.username == post.author.username &&  <PostEditAction postId={post._id}  onPostDeleted={onPostDelete}/>}              
             </div>
           </div>
             
           <TruncatedText text={post.text} limit={150} />
 
 
-          {post.image?.url && (
-            <div className="post-media-wrapper mb-3">
 
-              {post.image.contentType?.startsWith("image/") && (
-                <img src={post.image.url} className="post-media" />
-              )}
+         {post.media?.length > 0 && (
+  <div className="carousel-wrapper mb-3">
 
-              {post.image.contentType?.startsWith("video/") && (
-                <video src={post.image.url} className="post-media" controls />
-              )}
+    <div
+      className="media-scroll"
+      ref={scrollRef}
+      onScroll={handleScroll}
+    >
+      {post.media.map((item, index) => (
+        <div key={index} className="media-item">
 
+          {item.contentType?.startsWith("image/") && (
+            <img src={item.url} alt={`media-${index}`} />
+          )}
 
-              {post.image.contentType === "application/pdf" && (
-              <a
-                href={post.image.url}
-                target="_blank"
-                rel="noreferrer"
-                className="gmail-pdf"
-              >
-                <div className="pdf-icon">
-                  <i className="fa-solid fa-file-pdf"></i>
-                </div>
+          {item.contentType?.startsWith("video/") && (
+            <video src={item.url} controls />
+          )}
 
-                <div className="pdf-info">
-                  <span className="pdf-name">
-                    {post.image.originalname || "Document.pdf"}
+          {item.contentType === "application/pdf" && (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="pdf-card p-2"
+            >
+              <div className="pdf-icon p-4 me-1"> <i className="fa-solid fa-file-pdf "></i></div>
+              <div className="pdf-text text-break">
+                 <span className="pdf-name text-wrap">
+                    {item.filename || "Document.pdf"}
                   </span>
-                  <span className="pdf-sub">PDF • Click to view</span>
-                </div>
-
+                <span>Tap to open</span>
+                
+              </div>
                 <div className="pdf-action">
                   <i className="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
-              </a>
-            )}
-
-            </div>
+            </a>
           )}
 
-        <PostLikesComments
-            post={post}
-            currentUser={currentUser}
-            onPostUpdate={onPostUpdate}
-            setFlash={setFlash}
-        />
+        </div>
+      ))}
+    </div>
 
+    {post.media.length > 1 && (
+      <>
+        <div className="carousel-dots">
+          {post.media.map((_, i) => (
+            <span
+              key={i}
+              className={`dot ${i === activeIndex ? "active" : ""}`}
+            />
+          ))}
+        </div>
+
+        <div className="carousel-counter">
+          {activeIndex + 1}/{post.media.length}
+        </div>
+      </>
+    )}
+
+  </div>
+)}
+
+
+        <PostLikesComments  post={post}  currentUser={currentUser}  onPostUpdate={onPostUpdate}  setFlash={setFlash}  />
         </div>
       </div>
 

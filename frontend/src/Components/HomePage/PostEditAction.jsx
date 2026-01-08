@@ -73,6 +73,7 @@ function PostActions({ postId, onPostDeleted }) {
             <Link
               to={`/editpost/${postId}`}
               className="dropdown-item text-white"
+              style={{backgroundColor : "black"}}
               onClick={() => setOpen(false)}
             >
               Edit
@@ -84,6 +85,7 @@ function PostActions({ postId, onPostDeleted }) {
             <button
               className="dropdown-item text-white"
               onClick={handleDelete}
+              style={{backgroundColor : "black"}}
             >
               Delete
             </button>

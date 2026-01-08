@@ -65,7 +65,7 @@ function AdminProfilePage({ currentUser, setFlash }) {
         <hr className="text-secondary" />
       </div>
 
-      <div>
+      <div className="pb-5">
         {posts.length === 0 ? (
           <p className="text-light text-center">No posts yet</p>
         ) : (

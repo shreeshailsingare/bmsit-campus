@@ -7,23 +7,32 @@ import { useFlash } from "../../Context/FlashContext";
 function CreatePost() {
   const navigate = useNavigate();
   const [text, setText] = useState("");
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false)
+  const [files, setFiles] = useState([]);
+
   const { setFlash } = useFlash();
   const handleSubmit = async (e) => {
   e.preventDefault();
 
   const token = localStorage.getItem("token");
+
+  // const formData = new FormData();
+  // formData.append("text", text);
+  // if (file) formData.append("media", file);
   const formData = new FormData();
   formData.append("text", text);
-  if (file) formData.append("media", file);
+
+  // add all files
+  files.forEach((file) => {
+    formData.append("media", file);
+  });
+
 
   try {
     setLoading(true); 
 
-    const res = await axios.post(
-      "/posts",
-      formData,
+    const res = await axios.post("/posts", formData,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -66,12 +75,21 @@ function CreatePost() {
           ></textarea>
         </div>
 
-        <input
+        {/* <input
           type="file"
           accept="image/*,video/*,application/pdf"
           className="form-control bg-dark text-white"
           onChange={(e) => setFile(e.target.files[0])}
+        /> */}
+
+        <input
+          type="file"
+          multiple
+          accept="image/*,video/*,application/pdf"
+          className="form-control bg-dark text-white"
+          onChange={(e) => setFiles([...e.target.files])}
         />
+
 
         <div className="d-flex justify-content-end align-items-center  w-100">
           <button

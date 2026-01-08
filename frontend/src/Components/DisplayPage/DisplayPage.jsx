@@ -17,7 +17,7 @@ function DisplayPage() {
   return (
     <div className="container text-white min-vh-100 mt-0 py-4 ">
 
-      <div className="text-center mt-5 mb-3">
+      <div className="text-center mt-5 mb-2">
       </div>
 
       <div className="hero-carousel mb-4 mx-auto">
@@ -64,6 +64,14 @@ function DisplayPage() {
       </div>
 
       <hr />
+
+      <div className="cotnatiner px-2">
+      CAMPUS NEWS
+      <p>❯ New- magzines is available in library !</p>
+      <p>❯ Semister end exams starts on 30.12.2015</p>
+      <p>❯ Next week,College Badminton selection</p>
+      <p>❯ Infosis arrived our college next month - Placement Cell</p>
+      </div>
     </div>
   );
 }

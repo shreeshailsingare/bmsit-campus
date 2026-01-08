@@ -12,7 +12,7 @@ const postController = require("../controllers/post.js");
 
 router.route("/")
     
-    .post(verifyToken,isAdmin, upload.single('media'), wrapAsync(postController.createPost))
+    .post(verifyToken,isAdmin, upload.array("media", 5), wrapAsync(postController.createPost))
     .get(wrapAsync(postController.showPosts));
 
 router.route("/:id")
