@@ -2,7 +2,7 @@ import { Typewriter } from 'react-simple-typewriter';
 
 function HeroText() {
   return (
-    <div className="container text-start mt-5">
+    <div className="container text-start mt-3">
       <h1 className="fw-semibold fs-4">
         Explore new - {' '}
         <span className="text-white">

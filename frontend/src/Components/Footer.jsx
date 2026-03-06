@@ -7,6 +7,7 @@ function Footer() {
   const { user } = useContext(AuthContext);
   const { setFlash } = useFlash();
   const navigate = useNavigate();
+
   const handleProfileClick = () => {
     if (!user) {
       setFlash({type: "warning", message: "Please login",});
@@ -44,6 +45,7 @@ function Footer() {
           >
             <i className="fa-solid fa-user"></i>
           </button>
+
         </div>
       </div>
     </div>

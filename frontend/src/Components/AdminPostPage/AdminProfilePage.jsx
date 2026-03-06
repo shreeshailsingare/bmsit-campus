@@ -35,14 +35,12 @@ function AdminProfilePage({ currentUser, setFlash }) {
   }
 
   return (
-    <div className=" min-vh-100 mt-5 pt-3">
+    <div className=" min-vh-100 ">
 
       <div className="position-relative">
-        <img
-          src="/banner.png"
-          className="w-100"
-          style={{ height: "150px", objectFit: "cover" }}
-        />
+        <div  className="w-100" style={{ height: "150px",backgroundColor:"#37353E", objectFit: "cover" }}>
+
+        </div>
 
         <img
           src={admin.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
@@ -59,8 +57,10 @@ function AdminProfilePage({ currentUser, setFlash }) {
 
       <div className="container px-0  pt-5 mt-4">
         <div className="ps-3"> 
-        <h5 className="fw-bold text-white">{admin.name}</h5>
-        <p className="text-light opacity-75">@{admin.username}</p>
+          
+          <h5 className="fw-bold text-white">{admin.name}</h5>
+          <p className="text-light opacity-75">@{admin.username}</p>
+              
       </div>
         <hr className="text-secondary" />
       </div>

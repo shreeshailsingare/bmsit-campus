@@ -15,12 +15,12 @@ function DisplayPage() {
   }, []);
 
   return (
-    <div className="container text-white min-vh-100 mt-0 py-4 ">
+    <div className="container text-white min-vh-100  ">
 
-      <div className="text-center mt-5 mb-2">
+      <div className="text-center ">
       </div>
 
-      <div className="hero-carousel mb-4 mx-auto">
+      <div className="hero-carousel mb-0 ">
         <div
           id="carouselExampleSlidesOnly"
           className="carousel slide"
@@ -45,30 +45,30 @@ function DisplayPage() {
             ></button>
           </div>
 
-          <div className="carousel-inner rounded-4  ">
+          <div className="carousel-inner rounded  h-50 ">
             <div className="carousel-item active ">
-              <img src="image5.jpeg" className="d-block w-100 hero-img" alt="1" />
+              <img src="image5.jpeg" className="d-block w-100 hero-img rounded " style={{height:"250px"}} alt="1" />
             </div>
             <div className="carousel-item">
-              <img src="image6.jpeg" className="d-block w-100 hero-img" alt="2" />
+              <img src="image6.jpeg" className="d-block w-100 hero-img rounded" style={{height:"250px"}} alt="2" />
             </div>
             <div className="carousel-item">
-              <img src="image3.jpg" className="d-block w-100 hero-img" alt="3" />
+              <img src="image3.jpg" className="d-block w-100 hero-img rounded" style={{height:"250px"}} alt="3" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mb-4 px-2">
+      <div className="mb-0 px-2">
         <HeroText />
       </div>
 
       <hr />
 
-      <div className="cotnatiner px-2">
+      <div className="cotnatiner m-2 px-3 border  border-secondary  border-opacity-50 rounded">
       CAMPUS NEWS
       <p>❯ New- magzines is available in library !</p>
-      <p>❯ Semister end exams starts on 30.12.2015</p>
+      <p>❯ Apply for ....</p>
       <p>❯ Next week,College Badminton selection</p>
       <p>❯ Infosis arrived our college next month - Placement Cell</p>
       </div>

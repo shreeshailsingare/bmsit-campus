@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import PostEditAction from "./PostEditAction";
 import PostLikesComments from "./PostLikeCommentAction";
 import TruncatedText from "./TruncatedText";
 
-
 function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
+  const [selectedImg, setSelectedImg] = useState(null); // State for the clickable image
 
   const formatTimeAgo = (time) => {
     const seconds = Math.floor((new Date() - new Date(time)) / 1000);
@@ -16,23 +16,25 @@ function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
     return `${Math.floor(hours / 24)}d`;
   };
 
-  const [activeIndex, setActiveIndex] = useState(0);
-const scrollRef = useRef(null);
-
-const handleScroll = () => {
-  const el = scrollRef.current;
-  const index = Math.round(el.scrollLeft / el.offsetWidth);
-  setActiveIndex(index);
-};
-
+  const pdfs = post.media?.filter(item => item.contentType === "application/pdf").slice(0, 4) || [];
+  const video = post.media?.find(item => item.contentType?.startsWith("video/"));
+  const images = post.media?.filter(item => item.contentType?.startsWith("image/")).slice(0, 4) || [];
 
   return (
     <div className="container pt-2 ps-2 pe-3 text-white">
-      <div className="row mt-2">
+      {/* Lightbox Overlay */}
+      {selectedImg && (
+        <div className="image-lightbox-overlay" onClick={() => setSelectedImg(null)}>
+          <button className="close-lightbox">&times;</button>
+          <img src={selectedImg} alt="Full view" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
+
+      <div className="container row mt-2">
         <div className="col-2 pe-0">
           <img
             src={post.author?.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
-            className="rounded-circle"
+            className="rounded-3"
             width="42"
             height="42"
             alt="profile"
@@ -40,95 +42,60 @@ const handleScroll = () => {
         </div>
 
         <div className="col-10 ps-0">
-          <div className=" d-flex align-items-center justify-content-center">
-            <div className="d-flex  align-items-center  col-11">
-            <h6 className="fw-bold mb-0">{post.author?.name}</h6>
-            <span className="text-light opacity-75 px-2">
-              @{post.author?.username}
-            </span>
-            <small className="text-light opacity-75">
-              · {formatTimeAgo(post.createdAt)}
-            </small>
-          </div>
-           <div className="col-1 d-flex justify-content-end">
-             {currentUser && currentUser.username == post.author.username &&  <PostEditAction postId={post._id}  onPostDeleted={onPostDelete}/>}              
+          <div className="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center col-11">
+              <h6 className="fw-bold mb-0">{post.author?.name}</h6>
+              <span className="text-light opacity-75 px-2">@{post.author?.username}</span>
+              <small className="text-light opacity-75">· {formatTimeAgo(post.createdAt)}</small>
+            </div>
+            <div className="col-1 d-flex justify-content-end">
+              {currentUser && currentUser.username === post.author.username && (
+                <PostEditAction postId={post._id} onPostDeleted={onPostDelete} />
+              )}
             </div>
           </div>
-            
+
           <TruncatedText text={post.text} limit={150} />
 
-
-
-         {post.media?.length > 0 && (
-  <div className="carousel-wrapper mb-3">
-
-    <div
-      className="media-scroll"
-      ref={scrollRef}
-      onScroll={handleScroll}
-    >
-      {post.media.map((item, index) => (
-        <div key={index} className="media-item">
-
-          {item.contentType?.startsWith("image/") && (
-            <img src={item.url} alt={`media-${index}`} />
-          )}
-
-          {item.contentType?.startsWith("video/") && (
-            <video src={item.url} controls />
-          )}
-
-          {item.contentType === "application/pdf" && (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
-              className="pdf-card p-2"
-            >
-              <div className="pdf-icon p-4 me-1"> <i className="fa-solid fa-file-pdf "></i></div>
-              <div className="pdf-text text-break">
-                 <span className="pdf-name text-wrap">
-                    {item.filename || "Document.pdf"}
-                  </span>
-                <span>Tap to open</span>
-                
-              </div>
-                <div className="pdf-action">
-                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
+          <div className="post-attachments-wrapper mt-2 mb-3">
+            {/* PDFs */}
+            {pdfs.map((item, index) => (
+              <a key={`pdf-${index}`} href={item.url} target="_blank" rel="noreferrer" className="pdf-attachment-card mb-2">
+                <div className="pdf-icon-wrapper"><i className="fa-solid fa-file-pdf"></i></div>
+                <div className="pdf-content">
+                  <span className="pdf-title">{item.filename || "Document.pdf"}</span>
+                  <span className="pdf-subtitle">PDF • Tap to view</span>
                 </div>
-            </a>
-          )}
+              </a>
+            ))}
 
-        </div>
-      ))}
-    </div>
+            {/* Video */}
+            {video && (
+              <div className="post-video-container mb-2">
+                <video src={video.url} controls className="post-video-player" />
+              </div>
+            )}
 
-    {post.media.length > 1 && (
-      <>
-        <div className="carousel-dots">
-          {post.media.map((_, i) => (
-            <span
-              key={i}
-              className={`dot ${i === activeIndex ? "active" : ""}`}
-            />
-          ))}
-        </div>
+            {/* Clickable Image Grid */}
+            {images.length > 0 && (
+              <div className={`post-media-grid count-${images.length}`}>
+                {images.map((item, index) => (
+                  <div 
+                    key={`img-${index}`} 
+                    className="grid-item clickable" 
+                    onClick={() => setSelectedImg(item.url)}
+                  >
+                    <img src={item.url} alt="post content" className="grid-media" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-        <div className="carousel-counter">
-          {activeIndex + 1}/{post.media.length}
-        </div>
-      </>
-    )}
-
-  </div>
-)}
-
-
-        <PostLikesComments  post={post}  currentUser={currentUser}  onPostUpdate={onPostUpdate}  setFlash={setFlash}  />
+          <PostLikesComments post={post} currentUser={currentUser} onPostUpdate={onPostUpdate} setFlash={setFlash} />
         </div>
       </div>
-
-      <hr className="mt-2 mb-0" />
+      <hr className="mt-2 mb-0 opacity-25" />
     </div>
   );
 }

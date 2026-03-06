@@ -7,7 +7,7 @@ function Clubs() {
   const navigate = useNavigate();
 
   return (
-    <div className="container  mt-5 py-5 mb-5">
+    <div className="container   py-3 mb-5">
       <div className="row">
         {ClubsData.map((item, index) => (
           <CardButton

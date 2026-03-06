@@ -5,8 +5,8 @@ import CardButton from "./CardButton";
 function FilterPage() {
     const navigate = useNavigate();
     return(
-    <div className="container  mt-0 py-5 min-vh-100 " >
-      <div className="row pt-5"  >
+    <div className="container   min-vh-100 " >
+      <div className="row pt-3"  >
         {homeCards.map((item, index) => (
           <CardButton
             key={index}

@@ -22,15 +22,25 @@ import SignUp from './Components/SignUp/SignUp';
 import { useFlash } from "./Context/FlashContext";
 import FlashMessage from "./Components/Common/FlashMessage";
 
+import LeftSidebar from './Components/ProfilePage/LeftSidebar.jsx';
+
 function App() {  
     const { flash, setFlash } = useFlash();
   return (
-     <div className='min-vh-100 ' style={{backgroundColor:'black'}} >
-      <Navbar  />
+     <div className="app-container"  >
+      <header className="navbar-row">
+        <Navbar />
+      </header>
+      <div className="left-sidebar">
+        <ProfilePage/>
+      </div>
+
+      <div className="center-feed">
         <FlashMessage
         flash={flash}
         clearFlash={() => setFlash({ type: "", message: "" })}
         /> 
+
         <Routes> 
           <Route path="/" element={<HomePage  setFlash={setFlash}  />} /> 
           <Route path="/display" element={<DisplayPage/>} /> 
@@ -48,8 +58,18 @@ function App() {
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/login" element={<Login/>} /> 
           <Route path="/signup" element={<SignUp/>} /> 
-        </Routes>      
-      <Footer/>
+        </Routes> 
+
+        </div>     
+    
+
+      <div className="right-sidebar">
+        <DisplayPage/>
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
+      
     </div>
   )
 }

@@ -9,7 +9,6 @@ function PostActions({ postId, onPostDeleted }) {
   const { setFlash } = useFlash();
 
   if (!postId) {
-  // console.error("PostEditAction: postId missing");
   return null;
   }
 
@@ -59,7 +58,7 @@ function PostActions({ postId, onPostDeleted }) {
         className="btn text-light border-0 p-0"
         onClick={handleToggle}
       >
-        <i className="fa-solid fa-ellipsis-h"></i>
+        <i className=" auth-btn p-2 fa-solid fa-ellipsis-h"></i>
 
       </button>
 

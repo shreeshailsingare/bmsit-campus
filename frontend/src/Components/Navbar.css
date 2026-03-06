@@ -1,0 +1,121 @@
+/* Navbar container */
+.navbar-row {
+  grid-area: navbar;          /* fits your grid row 1 */
+  position: sticky;           /* stays on top while scrolling */
+  top: 0;
+  z-index: 1000;
+  height: 60px;
+  width: 100%;
+
+  background-color: #000;     /* your black theme */
+  border-bottom: 1px solid #222;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Inner container (like Bootstrap container-fluid but cleaner) */
+.navbar-container {
+  width: 100%;
+  max-width: 1400px;   /* prevents stretch on large laptops */
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo styling */
+.nav-logo {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-logo:hover {
+  color: #1d9bf0; /* X.com blue hover */
+}
+
+/* Right actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Button style (better than default bootstrap look) */
+.nav-btn-outline {
+  text-decoration: none;
+  color: white;
+  border: 1px solid #333;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  background: transparent;
+  transition: 0.2s ease;
+}
+
+.nav-btn-outline:hover {
+  background-color: #111;
+  border-color: #555;
+}
+
+/* SEARCH BOX */
+.nav-search {
+  flex: 1;
+  
+  max-width: 500px;
+  width: 100%;
+
+}
+.search-box {
+  flex: 1;
+  max-width: 500px;
+  display: block;
+}
+
+.nav-search input {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 1px solid #222;
+  background-color: #0f0f0f;
+  color: white;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.nav-search input::placeholder {
+  color: #888;
+}
+
+.nav-search input:focus {
+  border-color: #ffffff;
+  background-color: #111;
+}
+
+/* SEARCH BUTTON */
+.search-btn {
+  background-color: #000000; /* accent color */
+  border: none;
+  padding: 8px 14px;
+  color: rgb(203, 200, 200);
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Mobile responsive */
+@media (max-width: 700px) {
+  .search-box {
+    display: none;
+  }
+}

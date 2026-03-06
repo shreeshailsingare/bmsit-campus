@@ -1,5 +1,4 @@
 import React from "react";
-
 import Event from "./Event";
 import Posts from "./Posts";
 import PostButton from '../CreatePost/PostButton.jsx';
@@ -16,7 +15,8 @@ function HomePage({ setFlash }) {
        <Event/>
        <Posts currentUser={user} setFlash={setFlash}/>
   
-             {user?.role?.toLowerCase() === "admin" && <PostButton />}
+             {user?.role?.toLowerCase() === "admin" && <div className="d-block d-lg-none">
+  <PostButton /></div>}
        </>
     )
 }

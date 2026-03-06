@@ -182,12 +182,18 @@ return (
     <>
  <div className="d-flex justify-content-between text-light opacity-75 small mb-2 px-1">
    
-    <span role="button" onClick={handleLike} style={{ cursor: "pointer" }}>
+    <span 
+    className="auth-btn px-2 py-1 text-white"
+      role="button" 
+      onClick={handleLike} 
+      style={{ cursor: "pointer" }}
+    >
         <i  className={`fa-${isLiked ? "solid" : "regular"} fa-heart pe-2`}  style={{ color: isLiked ? "#f91880" : "" }}></i>
         {post.likes?.length || 0}
     </span>
 
     <span 
+        className="auth-btn px-2 py-1  text-white"
         role="button"
         onClick={toggleComments}
         style={{ cursor: "pointer" }}
@@ -196,9 +202,10 @@ return (
     </span>
     {/* <span><i className="fa-regular fa-folder pe-2"></i>{post.save?.length || 0}</span> */}
     <span
-  role="button"
-  onClick={handleSave}
-  style={{ cursor: "pointer" }}
+      className="auth-btn px-2 py-1  text-white"
+      role="button"
+      onClick={handleSave}
+      style={{ cursor: "pointer" }}
 >
   <i
     className={`fa-${isSaved ? "solid" : "regular"} fa-folder pe-2`}
@@ -208,6 +215,7 @@ return (
 </span>
 
     <span
+    className="auth-btn px-2 py-1  text-white"
       role="button"
       onClick={handleShare}
       style={{ cursor: "pointer" }}

@@ -4,9 +4,9 @@ function FlashMessage({ flash, clearFlash }) {
   return (
     <div
       className="position-fixed top-0 start-50 translate-middle-x mt-3"
-      style={{ zIndex: 2000, width: "90%", maxWidth: "600px" }}
+      style={{ zIndex: 2000, width: "90%", maxWidth: "600px " }}
     >
-      <div className={`alert alert-${flash.type} alert-dismissible fade show`}>
+      <div className={`alert alert-${flash.type} alert-dismissible fade show` }  style={{backgroundColor:"#ffffff",borderRadius:"25px",textAlign:"center",color:"black",border:"none"}} role="alert">
         {flash.message}
         <button
           type="button"
