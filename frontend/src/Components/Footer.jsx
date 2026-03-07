@@ -39,7 +39,7 @@ function Footer() {
         </div>
 
            <div className="col">
-          <Link className="navbar-brand fs-5" to="/filter">
+          <Link className="navbar-brand fs-5" to="/placementnews">
             <i class="fa-solid fa-briefcase"></i>
           </Link>
         </div>

@@ -19,6 +19,7 @@ import DeleteAccount from './Components/ProfilePage/DeleteAccount.jsx';
 import PostPage from "./Components/Post/PostPage";
 import Login from './Components/SignUp/Login';
 import SignUp from './Components/SignUp/SignUp';
+import Placementnews from './Components/Placement news/Placement news.jsx';
 import { useFlash } from "./Context/FlashContext";
 import FlashMessage from "./Components/Common/FlashMessage";
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/filter/clubs" element={<ClubsPage/>} /> 
           <Route path="/filter/ieeeclubs" element={<IEEEClubsPage/>} /> 
           <Route path="/profile" element={<ProfilePage/>} /> 
+          <Route path="/placementnews" element={<Placementnews/>} /> 
           <Route path="/filter/admin/:deptId" element={<AdminProfilePage/>} /> 
           <Route path="/createpost" element={<CreatePost/>} /> 
           <Route path="/editpost/:id" element={<EditPost/>} /> 
