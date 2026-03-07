@@ -21,7 +21,7 @@ function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
   const images = post.media?.filter(item => item.contentType?.startsWith("image/")).slice(0, 4) || [];
 
   return (
-    <div className="container pt-2 ps-2 pe-3 text-white">
+    <div className="container pt-0 ps-0 pe-3 text-white">
       {/* Lightbox Overlay */}
       {selectedImg && (
         <div className="image-lightbox-overlay" onClick={() => setSelectedImg(null)}>
@@ -31,7 +31,7 @@ function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
       )}
 
       <div className="container row mt-2">
-        <div className="col-2 pe-0">
+        <div className="col-1 pe-0 d-flex justify-content-center align-items-start">
           <img
             src={post.author?.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
             className="rounded-3"
@@ -41,7 +41,7 @@ function PostItem({ post, onPostUpdate, onPostDelete, currentUser, setFlash }) {
           />
         </div>
 
-        <div className="col-10 ps-0">
+        <div className="col-11 ps-3 pt-0">
           <div className="d-flex align-items-center justify-content-center">
             <div className="d-flex align-items-center col-11">
               <h6 className="fw-bold mb-0">{post.author?.name}</h6>

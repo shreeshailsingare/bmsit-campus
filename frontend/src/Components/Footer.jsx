@@ -38,6 +38,12 @@ function Footer() {
           </Link>
         </div>
 
+           <div className="col">
+          <Link className="navbar-brand fs-5" to="/filter">
+            <i class="fa-solid fa-briefcase"></i>
+          </Link>
+        </div>
+
         <div className="col">
           <button
             onClick={handleProfileClick}
