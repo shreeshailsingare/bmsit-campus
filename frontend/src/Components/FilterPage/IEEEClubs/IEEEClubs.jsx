@@ -7,7 +7,7 @@ function IEEEClubs() {
   const navigate = useNavigate();
 
   return (
-    <div className="container  mt-5 pt-5 mb-5">
+    <div className="container   mt-3 mb-5">
       <div className="row">
         {IEEEClubsData.map((item, index) => (
           <CardButton

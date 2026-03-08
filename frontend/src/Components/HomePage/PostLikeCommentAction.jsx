@@ -180,7 +180,7 @@ const handleSave = async () => {
 
 return (
     <>
- <div className="d-flex justify-content-between text-light opacity-75 small mb-2 px-1">
+ <div className="d-flex justify-content-between text-light opacity-75 small m-2 px-1">
    
     <span 
     className="auth-btn px-2 py-1 text-white"

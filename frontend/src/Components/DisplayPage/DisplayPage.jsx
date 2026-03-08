@@ -15,7 +15,7 @@ function DisplayPage() {
   }, []);
 
   return (
-    <div className="container text-white min-vh-100  ">
+    <div className="container text-white min-vh-60 ">
 
       <div className="text-center ">
       </div>

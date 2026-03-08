@@ -27,7 +27,7 @@ function SignUp() {
   };
 
   return (
-    <div className="container-fluid min-vh-100  d-flex justify-content-center align-items-center">
+    <div className="container-fluid min-vh-60 mt-3 d-flex justify-content-center align-items-center">
       <div
         className="card text-light shadow-lg border-0"
         style={{ maxWidth: "400px", width: "100%", backgroundColor: "#1e1e1e" }}
@@ -36,13 +36,13 @@ function SignUp() {
           <Link to="/" type="button" className="btn-close" aria-label="Close" />
         </div>
         
-        <div className="card-body p-4">
-          <h3 className="text-center fw-bold mb-2">Sign Up</h3>
+        <div className="card-body ">
+          <h3 className="text-center fw-bold mb-0">Register</h3>
           <form onSubmit={signUp}>
             <div className="mb-3">
               <label className="form-label text-secondary">Role</label>
               <select
-                className="form-select bg-dark text-light border-secondary"
+                className="form-select  text-dark border-secondary"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
               >
@@ -52,38 +52,38 @@ function SignUp() {
             </div>
 
             <div className="mb-3">
-              <label className="form-label text-secondary">Full Name</label>
+              {/* <label className="form-label text-secondary">Full Name</label> */}
               <input
                 type="text"
-                className="form-control bg-dark text-light border-secondary"
+                className="form-control  text-light border-secondary"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your full name"
+                placeholder="Enter your first name"
                 required
               />
             </div>
 
             <div className="mb-3">
-              <label className="form-label text-secondary">Username</label>
+              {/* <label className="form-label text-secondary">Username</label> */}
               <input
                 type="text"
-                className="form-control bg-dark text-light border-secondary"
+                className="form-control  text-light border-secondary"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Choice of username"
                 required
               />
             </div>
 
             <div className="mb-3">
-              <label className="form-label text-secondary">Password</label>
+              {/* <label className="form-label text-secondary">Password</label> */}
               <input
                 type="password"
                 autoComplete="current-password"
-                className="form-control bg-dark text-light border-secondary"
+                className="form-control  text-light border-secondary"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder="Create password"
                 required
               />
             </div>
@@ -93,7 +93,7 @@ function SignUp() {
               style={{ backgroundColor: "#ff5722" }}
               disabled={loading}
             >
-              {loading ? "signing..." : "SignUp"}
+              {loading ? "Registering..." : "Register"}
             </button>
 
             <div className="d-flex align-items-center justify-content-around mt-3">

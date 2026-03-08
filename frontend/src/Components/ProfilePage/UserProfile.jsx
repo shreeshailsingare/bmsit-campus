@@ -62,7 +62,7 @@ function ProfilePage() {
   // }
 
   return (
-    <div className="container    min-vh-100 mt-0   ">
+    <div className="container    min-vh-60 mt-0   ">
        {/* FOR MOBILE */}
        <div className="profile-page">
       <div className="row justify-content-center text-white text-center mt-5 mb-4 ">

@@ -51,7 +51,7 @@ function CreatePost() {
 };
 
   return (
-    <div className="container  min-vh-100 text-white ">
+    <div className="container  min-vh-60 text-white ">
       <form onSubmit={handleSubmit} className="p-4">
         <div data-bs-theme="dark" className="d-flex justify-content-end">
           <Link to="/" className="btn-close"></Link>

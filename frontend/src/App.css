@@ -1,4 +1,4 @@
-/* postPage */
+postPage
 .post-image-wrapper {
   width: 100%;
   max-height: 420px;        
@@ -573,6 +573,96 @@ max-height: 500px;
   cursor: pointer;
 }
 
+
+
+/* Container and Layout */
+.x-post-container {
+  padding: 12px 16px;
+  border-bottom: 1px solid #2f3336;
+  background-color: #000;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.x-post-container:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.x-post-content {
+  display: flex;
+  gap: 12px;
+}
+
+/* Profile Image */
+.x-post-left {
+  flex-shrink: 0;
+}
+
+.x-profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Content Area */
+.x-post-right {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow breaking layout */
+}
+
+/* Header Typography */
+.x-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.x-user-info {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.x-display-name {
+  font-weight: 700;
+  color: #e7e9ea;
+}
+
+.x-username, .x-time, .x-dot {
+  color: #71767b;
+}
+
+/* Body Text */
+.x-post-body {
+  font-size: 15px;
+  line-height: 20px;
+  color: #e7e9ea;
+  word-wrap: break-word;
+  margin-bottom: 12px;
+}
+
+/* Media Styling */
+.x-media-container {
+  margin-top: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+  /* border: 1px solid #2f3336; */
+}
+
+/* Social Actions Bar */
+
+
+/* Fix for your existing grid to fit the wrapper */
+.post-media-grid {
+  border: none !important; /* Remove double border */
+  border-radius: 0 !important;
+}
 
 
 

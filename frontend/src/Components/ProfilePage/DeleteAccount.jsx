@@ -26,7 +26,7 @@ function DeleteAccount() {
   };
 
   return (
-    <div className="container  min-vh-100 text-white d-flex align-items-center justify-content-center">
+    <div className="container  min-vh-60 mt-4 text-white d-flex align-items-center justify-content-center">
       <div className="card bg-dark text-white p-4" style={{ maxWidth: "500px" }}>
         <h4 className="text-danger mb-3">Delete Account</h4>
         <p>

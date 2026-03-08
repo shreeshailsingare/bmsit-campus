@@ -68,8 +68,8 @@ const handleSubmit = async (e) => {
   }
 
   return (
-    <div className="  min-vh-100">
-      <div className="container mt-5 d-flex justify-content-center">
+    <div className="  min-vh-60">
+      <div className="container mt-2 d-flex justify-content-center">
         <div
           className=" border-0 mt-5 overflow-hidden"
           style={{ maxWidth: "600px", width: "100%" }}

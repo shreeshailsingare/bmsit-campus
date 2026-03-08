@@ -27,7 +27,7 @@ function Login() {
   };
 
   return (
-    <div className="container-fluid min-vh-100  d-flex justify-content-center align-items-center">
+    <div className="container-fluid min-vh-60 mt-3 d-flex justify-content-center align-items-center">
       <div
         className="card text-light shadow-lg border-0"
         style={{ maxWidth: "400px", width: "100%", backgroundColor: "#1e1e1e" }}
@@ -36,15 +36,16 @@ function Login() {
           <Link to="/" className="btn-close" />
         </div>
 
-        <div className="card-body p-4">
-          <h3 className="text-center fw-bold mb-4">Login</h3>
+        <div className="card-body px-4">
+          <h3 className="text-center fw-bold mb-2">Login</h3>
 
           <form onSubmit={handleLogin}>
             <div className="mb-3">
-              <label className="form-label text-secondary">Username</label>
+              {/* <label className="form-label text-secondary">Username</label> */}
               <input
                 type="text"
-                className="form-control bg-dark text-light border-secondary"
+                className="form-control  text-dark border-secondary"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -52,10 +53,11 @@ function Login() {
             </div>
 
             <div className="mb-3">
-              <label className="form-label text-secondary">Password</label>
+              {/* <label className="form-label text-secondary">Password</label> */}
               <input
                 type="password"
-                className="form-control bg-dark text-light border-secondary"
+                className="form-control  text-dark border-secondary"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

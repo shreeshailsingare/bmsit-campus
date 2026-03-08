@@ -46,7 +46,7 @@ function Posts({ currentUser, setFlash }) {
   };
 
   return (
-    <div className="pb-5 mt-3 border-top border-secondary border-opacity-50">
+    <div className=" mt-3  border-top border-secondary border-opacity-50">
       {posts.map(post => (
         <PostItem
           key={post._id}
@@ -57,6 +57,9 @@ function Posts({ currentUser, setFlash }) {
           setFlash={setFlash}
         />
       ))}
+      <div className="text-center text-secondary mt-4 mb-5 pb-5">
+        you have reached the end of the posts
+      </div>
     </div>
   );
 }

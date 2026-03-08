@@ -35,7 +35,7 @@ function AdminProfilePage({ currentUser, setFlash }) {
   }
 
   return (
-    <div className=" min-vh-100 ">
+    <div className=" min-vh-60 ">
 
       <div className="position-relative">
         <div  className="w-100" style={{ height: "150px",backgroundColor:"#37353E", objectFit: "cover" }}>

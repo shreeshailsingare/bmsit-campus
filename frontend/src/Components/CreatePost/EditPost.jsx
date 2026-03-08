@@ -90,7 +90,7 @@ useEffect(() => {
     }
 
   return (
-    <div className="container  min-vh-100 text-white pt-5">
+    <div className="container  min-vh-60 text-white pt-5">
       <form className="p-2" onSubmit={handleSubmit}>
         <div data-bs-theme="dark" className="d-flex justify-content-end">
           <Link to="/" className="btn-close"></Link>
