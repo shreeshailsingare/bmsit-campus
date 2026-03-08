@@ -17,14 +17,12 @@ function Navbar() {
 
   return (
     <nav className="navbar-row">
-      <div className="navbar-container">
-        
-        
+      <div className="navbar-container  ">
+             
         <Link className="nav-logo" to="/">
-          <span className="text-danger">BMSIT</span> <span className="text-primary">Campus</span>
+          <span className="text-danger fw-bold fs-4">BMSIT</span> <span className="text-primary fw-bold fs-4">Campus</span>
         </Link>
 
-  
         <div className="nav-actions">
           {user ? (
             <button

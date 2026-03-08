@@ -5,8 +5,7 @@ import {Link} from "react-router-dom";
 import './UserProfile.css'
 import Desktop_ProfilePage from './LeftSidebar.jsx';
 
-function ProfilePage() {
-  // const [user, setUser] = useState(null); 
+function ProfilePage() { 
   const [user, setUser] = useState({
   name: "Guest_User",
   username: "guest",
@@ -15,18 +14,6 @@ function ProfilePage() {
   }
 });
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (!token) return;
-
-  //   axios.get("/auth/me", {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //   .then(res => setUser(res.data))
-  //   .catch(err => console.log(err));
-  // }, []);
 
   useEffect(() => {
   const token = localStorage.getItem("token");
@@ -46,7 +33,6 @@ function ProfilePage() {
   })
   .catch(err => {
     console.log(err);
-    // If error (token expired / not logged in) → fallback to guest
     setUser({
       name: "Guest_User",
       username: "guest",
@@ -56,10 +42,6 @@ function ProfilePage() {
     });
   });
 }, []);
-
-  //  if (!user) {
-  //   return <p className="text-white text-center mt-5 pt-5">Please login to view your profile</p>;
-  // }
 
   return (
     <div className="container    min-vh-60 mt-0   ">
@@ -123,7 +105,7 @@ function ProfilePage() {
             height="80"
             alt="profile"
           />
-          </div>
+        </div>
 
           <div className="col-6 p-2 profile_list">
           <h5 className="fw-bold mb-0  w-100">{user.name}</h5>
@@ -140,38 +122,49 @@ function ProfilePage() {
              <span className="profile_list">Home</span> 
             </Link>
 
-            <Link className=" fs-4 text-white text-decoration-none p-2 sidebar-links" to="/profile">
-              <i className="fa-solid fa-circle-user pe-4"></i> 
-              <span className="profile_list">Profile</span> 
+            <Link className="fs-4 text-white text-decoration-none p-2 sidebar-links " to="/placementnews">
+               <i className="fa-solid fa-briefcase pe-4"></i>
+                <span className="profile_list">Placement </span>
             </Link>
 
             <Link className="fs-4 text-white text-decoration-none p-2 sidebar-links " to="/filter">
                <i className="fa-solid fa-filter pe-4"></i>
                 <span className="profile_list">Filter</span>
             </Link>
-            
-            <Link  to="/profile/saved" className="text-white text-decoration-none p-2 sidebar-links" >
-              <i className="fa-regular fa-folder pe-4"></i>
-              <span className="profile_list">Saved Posts</span>
-            </Link>
+              
+              {user.username !== "guest" && (
+                <>
+                  <Link to="/profile/saved" className="text-white text-decoration-none p-2 sidebar-links">
+                    <i className="fa-regular fa-folder pe-4"></i>
+                    <span className="profile_list">Saved Posts</span>
+                  </Link>
 
-            <Link to='/profile/delete' className="text-white text-decoration-none p-2 sidebar-links" >
-                <i className="fa-solid fa-trash pe-4"></i>
-                <span className="profile_list">Delete </span>
-            </Link>
+                  <Link to="/profile/edit" className="text-white text-decoration-none p-2 sidebar-links">
+                    <i className="fa-regular fa-pen-to-square pe-4"></i>
+                    <span className="profile_list">Edit</span>
+                  </Link>
+
+                  <Link to="/profile/delete" className="text-white text-decoration-none p-2 sidebar-links">
+                    <i className="fa-solid fa-trash pe-4"></i>
+                    <span className="profile_list">Delete</span>
+                  </Link>
+                </>
+              )}
             
             <Link to='/profile/theme' className="text-white text-decoration-none p-2 sidebar-links">
             <i className="fa-solid fa-circle-half-stroke pe-4"></i>
              <span className="profile_list">Theme</span> 
             </Link>
-            <div className="d-flex justify-content-center mt-4 profile_list w-100 ">
-              <Link type="button" className="btn btn-light rounded-pill w-100 " to="/createpost">
-                Post
-              </Link>
-            </div>
-          </div>
 
-          {/* {user.role !== "guest" && <PostButton />} */}
+           {user && user.role === "Admin" && (
+              <div className="d-flex justify-content-center mt-4 profile_list w-100">
+                <Link type="button" className="btn btn-light rounded-pill w-100" to="/createpost">
+                  Post
+                </Link>
+              </div>
+            )}
+           
+          </div>
 
         </div>
       </div>

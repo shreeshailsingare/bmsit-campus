@@ -7,7 +7,6 @@ function DeleteAccount() {
   const { setFlash } = useFlash();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
       " This will permanently delete your account. Are you sure?"
@@ -35,7 +34,7 @@ function DeleteAccount() {
         </p>
 
         <div className="d-flex justify-content-end gap-2 mt-4">
-          <Link to="/profile" className="btn btn-secondary">
+          <Link to="/" className="btn btn-secondary">
             Cancel
           </Link>
           <button className="btn btn-danger" onClick={handleDelete}>

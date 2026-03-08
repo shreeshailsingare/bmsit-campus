@@ -1,13 +1,13 @@
 /* Navbar container */
 .navbar-row {
-  grid-area: navbar;          /* fits your grid row 1 */
-  position: sticky;           /* stays on top while scrolling */
+  grid-area: navbar;        
+  position: sticky;           
   top: 0;
   z-index: 1000;
   height: 60px;
   width: 100%;
 
-  background-color: #000;     /* your black theme */
+  background-color: #000;     
   border-bottom: 1px solid #222;
 
   display: flex;
@@ -17,7 +17,7 @@
 /* Inner container (like Bootstrap container-fluid but cleaner) */
 .navbar-container {
   width: 100%;
-  max-width: 1400px;   /* prevents stretch on large laptops */
+  max-width: 1400px;   
   margin: 0 auto;
   padding: 0 20px;
 
@@ -36,7 +36,7 @@
 }
 
 .nav-logo:hover {
-  color: #1d9bf0; /* X.com blue hover */
+  color: #1d9bf0; 
 }
 
 /* Right actions */
@@ -100,7 +100,7 @@
 
 /* SEARCH BUTTON */
 .search-btn {
-  background-color: #000000; /* accent color */
+  background-color: #000000;
   border: none;
   padding: 8px 14px;
   color: rgb(203, 200, 200);

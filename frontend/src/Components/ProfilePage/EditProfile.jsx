@@ -12,7 +12,6 @@ function EditProfile() {
   const [submitting, setSubmitting] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const { setFlash } = useFlash();
-
   const token = localStorage.getItem("token");
   useEffect(() => {
     axios.get("/auth/me", {headers: { Authorization: `Bearer ${token}`,},})
@@ -50,7 +49,7 @@ const handleSubmit = async (e) => {
     });
     setFlash({ type: "success", message: "Profile updated successfully" });
 
-    navigate("/profile");
+    navigate("/");
   } catch (err) {
     console.error(err);
      setFlash({
@@ -146,7 +145,7 @@ const handleSubmit = async (e) => {
 
 
                 <Link
-                  to="/profile"
+                  to="/"
                   className="btn btn-secondary ms-2 rounded-pill fw-bold px-4"
                 >
                   Cancel

@@ -4,7 +4,6 @@ function TruncatedText({ text, limit = 120 }) {
   const [expanded, setExpanded] = useState(false);
 
   if (!text) return null;
-
   const isLong = text.length > limit;
   const displayText = expanded || !isLong
     ? text

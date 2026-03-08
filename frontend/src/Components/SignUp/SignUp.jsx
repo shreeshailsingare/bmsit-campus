@@ -55,7 +55,7 @@ function SignUp() {
               {/* <label className="form-label text-secondary">Full Name</label> */}
               <input
                 type="text"
-                className="form-control  text-light border-secondary"
+                className="form-control  text-dark border-secondary"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your first name"
@@ -67,7 +67,7 @@ function SignUp() {
               {/* <label className="form-label text-secondary">Username</label> */}
               <input
                 type="text"
-                className="form-control  text-light border-secondary"
+                className="form-control  text-dark border-secondary"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Choice of username"
@@ -80,7 +80,7 @@ function SignUp() {
               <input
                 type="password"
                 autoComplete="current-password"
-                className="form-control  text-light border-secondary"
+                className="form-control  text-dark border-secondary"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create password"

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import axios from "axios";
 
@@ -16,10 +15,8 @@ const formatTimeAgo = (date) => {
 
   const userId = currentUser?._id;
   const isSaved = post.saves?.some(id => id.toString() === userId);
-
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [commentText, setCommentText] = useState("");
-  
   const isLiked = post.likes?.some(
     (id) => id.toString() === userId
   );
