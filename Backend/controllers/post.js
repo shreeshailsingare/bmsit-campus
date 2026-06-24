@@ -2,34 +2,6 @@ const mongoose = require("mongoose");
 const Post=require("../models/Post.js");
 const ExpressError = require("../utils/ExpressError.js");
 
-// module.exports.createPost = async (req, res) => {
-//     const { text } = req.body; 
-//     const uploadedFile = req.file; 
-
-//     let mediaObject = {};
-//     if (uploadedFile) {
-//   mediaObject.image = {
-//     url: uploadedFile.path,          
-//     filename: uploadedFile.filename,
-//     contentType: uploadedFile.mimetype   
-//   };
-// }
-
-//     const newPost = new Post({
-//       author: req.user.id,
-//       text,
-//       ...mediaObject, 
-//     });
-//     if (!text || !text.trim()) {
-//       throw new ExpressError(400, "Post text is required");
-//     }
-//     const savedPost = await newPost.save();
-//     res.status(201).json({ 
-//         message: "Post created successfully!", 
-//         post: savedPost 
-//     });
-// };
-
 module.exports.createPost = async (req, res) => {
   const { text } = req.body;
 
