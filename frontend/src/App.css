@@ -115,7 +115,7 @@ select {
 }
 
 
-/* pdf */
+/* pdf style */
 .gmail-pdf {
   display: flex;
   align-items: center;
@@ -252,7 +252,7 @@ max-height: 500px;
   transform: scale(1.2);
 }
 
-/* counter (1/4) */
+/* counter */
 .carousel-counter {
   position: absolute;
   top: 10px;
@@ -329,7 +329,6 @@ max-height: 500px;
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-  /* background-color: #000; */
 }
 
 .left-sidebar,
@@ -406,8 +405,6 @@ max-height: 500px;
     position: sticky;
     top: 60px;
     height: calc(100vh - 60px);
-    /* padding: 20px; */
-
   }
 
   .event-img {
@@ -433,7 +430,7 @@ max-height: 500px;
 
 
 /* post modification */
-/* --- Media Grid (X.com Style) --- */
+/* --- Media Grid --- */
 .post-media-grid {
   display: grid;
   gap: 2px;
@@ -608,7 +605,7 @@ max-height: 500px;
 /* Content Area */
 .x-post-right {
   flex: 1;
-  min-width: 0; /* Prevents text overflow breaking layout */
+  min-width: 0; 
 }
 
 /* Header Typography */
@@ -652,15 +649,10 @@ max-height: 500px;
   margin-top: 12px;
   border-radius: 16px;
   overflow: hidden;
-  /* border: 1px solid #2f3336; */
 }
 
-/* Social Actions Bar */
-
-
-/* Fix for your existing grid to fit the wrapper */
 .post-media-grid {
-  border: none !important; /* Remove double border */
+  border: none !important; 
   border-radius: 0 !important;
 }
 
