@@ -50,14 +50,6 @@ const postSchema = new Schema({
     required: true
    },
 
-  // image: {
-  //   filename: { 
-  //     type: String, 
-  //     default: "post_content" },
-  //   contentType: String,
-  //   url: String,
-  // },
-
   media: [
   {
     filename: String,
