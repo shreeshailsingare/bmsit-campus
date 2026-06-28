@@ -187,9 +187,7 @@ module.exports.editPost=async (req, res) => {
     } else {
       post.saves.push(userId);
     }
-
     await post.save();
-
     res.json({
       action: alreadySaved ? "unsaved" : "saved",
       saves: post.saves,
@@ -262,8 +260,7 @@ module.exports.editPost=async (req, res) => {
        comment.likes = comment.likes.filter(
          (id) => id.toString() !== userId.toString()
        );
-       if (alreadyDisliked) {
-         
+       if (alreadyDisliked) {        
          comment.dislikes = comment.dislikes.filter(
            (id) => id.toString() !== userId.toString()
          );
@@ -293,8 +290,7 @@ module.exports.editPost=async (req, res) => {
 
     module.exports.ShowSavedPost=async (req, res) => {
       try {
-        const userId = req.user.id;
-    
+        const userId = req.user.id;  
         const savedPosts = await Post.find({ saves: userId })
           .populate("author", "name username profile_image")
           .sort({ createdAt: -1 });

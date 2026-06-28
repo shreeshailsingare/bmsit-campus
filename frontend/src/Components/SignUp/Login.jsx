@@ -29,10 +29,10 @@ function Login() {
   return (
     <div className="container-fluid min-vh-60 mt-3 d-flex justify-content-center align-items-center">
       <div
-        className="card text-light shadow-lg border-0"
-        style={{ maxWidth: "400px", width: "100%", backgroundColor: "#1e1e1e" }}
+        className="card text-dark shadow-lg border-0"
+        style={{ maxWidth: "400px", width: "100%", backgroundColor: "#F5F8FA " }}
       >
-        <div data-bs-theme="dark" className="d-flex justify-content-end mt-3 me-3">
+        <div data-bs-theme="light" className="d-flex justify-content-end mt-3 me-3">
           <Link to="/" className="btn-close" />
         </div>
 
@@ -75,7 +75,7 @@ function Login() {
 
             <div className="d-flex justify-content-around mt-3">
               <p className="mb-0">Don't have an account?</p>
-              <Link to="/signup" className="text-info text-decoration-none">
+              <Link to="/signup" className="text-primary text-decoration-none">
                 SignUp
               </Link>
             </div>

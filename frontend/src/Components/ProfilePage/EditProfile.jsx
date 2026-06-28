@@ -92,8 +92,8 @@ const handleSubmit = async (e) => {
           <div className="  pt-4 px-4 pb-4 ">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label text-light opacity-75 small fw-bold">
-                  First Name
+                <label className="form-label text-dark opacity-75 small fw-bold">
+                   Name
                 </label>
                 <input
                   type="text"
@@ -105,8 +105,8 @@ const handleSubmit = async (e) => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label text-light opacity-75 small fw-bold">
-                  Profile Image
+                <label className="form-label text-dark opacity-75 small fw-bold">
+                  Choose  Image
                 </label>
                <input
                   type="file"

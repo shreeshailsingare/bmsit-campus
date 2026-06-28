@@ -10,7 +10,7 @@ function TruncatedText({ text, limit = 120 }) {
     : text.slice(0, limit) + "...";
 
   return (
-    <p className="mt-0 mb-2 text-white">
+    <p className="mt-0 mb-2 text-dark">
       {displayText}
 
       {isLong && (

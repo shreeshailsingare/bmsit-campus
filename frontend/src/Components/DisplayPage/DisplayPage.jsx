@@ -15,7 +15,7 @@ function DisplayPage() {
   }, []);
 
   return (
-    <div className="container text-white min-vh-60 mt-2">
+    <div className="container text-dark min-vh-60 mt-2">
 
       <div className="text-center ">
       </div>
@@ -67,10 +67,8 @@ function DisplayPage() {
 
       <div className="cotnatiner m-2 px-3 border  border-secondary  border-opacity-50 rounded">
       CAMPUS NEWS
-      <p>❯ New- magzines is available in library !</p>
-      <p>❯ Apply for ....</p>
-      <p>❯ Next week,College Badminton selection</p>
-      <p>❯ Infosis arrived our college next month - Placement Cell</p>
+      <p>Coming soon...</p>
+      
       </div>
     </div>
   );

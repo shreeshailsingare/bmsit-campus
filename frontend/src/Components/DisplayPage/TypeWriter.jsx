@@ -5,7 +5,7 @@ function HeroText() {
     <div className="container text-start mt-3">
       <h1 className="fw-semibold fs-4">
         Explore new - {' '}
-        <span className="text-white">
+        <span className="text-dark">
           <Typewriter
             words={['Events', 'Hackthons', 'Webinars']}
             loop={0}

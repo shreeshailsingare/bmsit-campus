@@ -7,14 +7,14 @@
   height: 60px;
   width: 100%;
 
-  background-color: #000;     
-  border-bottom: 1px solid #222;
+  background-color: #f5f8fa;     
+  border-bottom: 1px solid #a7a5a5;
 
   display: flex;
   align-items: center;
 }
 
-/* Inner container (like Bootstrap container-fluid but cleaner) */
+/* Inner container  */
 .navbar-container {
   width: 100%;
   max-width: 1400px;   
@@ -36,7 +36,7 @@
 }
 
 .nav-logo:hover {
-  color: #1d9bf0; 
+  color: #1DA1F2; 
 }
 
 /* Right actions */
@@ -49,8 +49,8 @@
 /* Button style (better than default bootstrap look) */
 .nav-btn-outline {
   text-decoration: none;
-  color: white;
-  border: 1px solid #333;
+  color: black;
+  border: 1px solid #4f4f4f;
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 14px;
@@ -59,7 +59,7 @@
 }
 
 .nav-btn-outline:hover {
-  background-color: #111;
+  background-color: #b7b8b9;
   border-color: #555;
 }
 

@@ -47,7 +47,7 @@ function ProfilePage() {
     <div className="container    min-vh-60 mt-0   ">
        {/* FOR MOBILE */}
        <div className="profile-page">
-      <div className="row justify-content-center text-white text-center mt-5 mb-4 ">
+      <div className="row justify-content-center text-dark text-center mt-5 mb-4 ">
         <div className="col-12">
           <img
             src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
@@ -68,23 +68,23 @@ function ProfilePage() {
          <div className="list-group list-group-flush  " >
           <Link
               to="/profile/saved"
-              className="list-group-item text-white border-0"
-              style={{ backgroundColor: "black" }}
+              className="list-group-item text-dark border-0"
+              style={{backgroundColor:'#F5F8FA' }}
             >
               <i className="fa-regular fa-folder me-2"></i>
               Saved Posts
             </Link>
 
-            <Link to='/profile/edit' className="list-group-item border-0  text-white "style={{backgroundColor:'black'}}>
+            <Link to='/profile/edit' className="list-group-item border-0  text-dark "style={{backgroundColor:'#F5F8FA' }}>
                 <i className="fa-regular fa-pen-to-square me-2"> </i>
                  Edit 
             </Link>
             
-            <Link to='/profile/delete' className="list-group-item border-0 text-white " style={{backgroundColor:'black'}}>
+            <Link to='/profile/delete' className="list-group-item border-0 text-dark " style={{backgroundColor:'#F5F8FA' }}>
                 <i className="fa-solid fa-trash pe-2"></i>
                 Delete Account
             </Link>
-            <a href="#" className="list-group-item text-white  " style={{backgroundColor:'black'}}>
+            <a href="#" className="list-group-item text-dark  " style={{backgroundColor:'#F5F8FA' }}>
                 <i className="fa-solid fa-circle-half-stroke pe-2"></i>
                 Theme
             </a>
@@ -95,7 +95,7 @@ function ProfilePage() {
       </div>
 
  {/* FOR DESKTOP */}
-      <div className="row text-white   Desktop-profile-page">
+      <div className="row text-dark   Desktop-profile-page">
         <div className="row mb-2">
         <div className="col-5">
           <img
@@ -117,48 +117,48 @@ function ProfilePage() {
 
         <div className="row mt-3">
           <div className="col-12 justify-content-start text-start fs-4 d-flex flex-column " >
-            <Link className=" fs-4 text-white text-decoration-none p-2 sidebar-links  " to="/">
+            <Link className=" fs-4 text-dark text-decoration-none p-2 sidebar-links  " to="/">
               <i className="fa-solid fa-house pe-4"> </i> 
              <span className="profile_list">Home</span> 
             </Link>
 
-            <Link className="fs-4 text-white text-decoration-none p-2 sidebar-links " to="/placementnews">
+            <Link className="fs-4 text-dark text-decoration-none p-2 sidebar-links " to="/placementnews">
                <i className="fa-solid fa-briefcase pe-4"></i>
                 <span className="profile_list">Placement </span>
             </Link>
 
-            <Link className="fs-4 text-white text-decoration-none p-2 sidebar-links " to="/filter">
+            <Link className="fs-4 text-dark text-decoration-none p-2 sidebar-links " to="/filter">
                <i className="fa-solid fa-filter pe-4"></i>
                 <span className="profile_list">Filter</span>
             </Link>
               
               {user.username !== "guest" && (
                 <>
-                  <Link to="/profile/saved" className="text-white text-decoration-none p-2 sidebar-links">
+                  <Link to="/profile/saved" className="text-dark text-decoration-none p-2 sidebar-links">
                     <i className="fa-regular fa-folder pe-4"></i>
                     <span className="profile_list">Saved Posts</span>
                   </Link>
 
-                  <Link to="/profile/edit" className="text-white text-decoration-none p-2 sidebar-links">
+                  <Link to="/profile/edit" className="text-dark text-decoration-none p-2 sidebar-links">
                     <i className="fa-regular fa-pen-to-square pe-4"></i>
                     <span className="profile_list">Edit</span>
                   </Link>
 
-                  <Link to="/profile/delete" className="text-white text-decoration-none p-2 sidebar-links">
+                  <Link to="/profile/delete" className="text-dark text-decoration-none p-2 sidebar-links">
                     <i className="fa-solid fa-trash pe-4"></i>
                     <span className="profile_list">Delete</span>
                   </Link>
                 </>
               )}
             
-            <Link to='/profile/theme' className="text-white text-decoration-none p-2 sidebar-links">
+            <Link to='/profile/theme' className="text-dark text-decoration-none p-2 sidebar-links">
             <i className="fa-solid fa-circle-half-stroke pe-4"></i>
              <span className="profile_list">Theme</span> 
             </Link>
 
            {user && user.role === "Admin" && (
               <div className="d-flex justify-content-center mt-4 profile_list w-100">
-                <Link type="button" className="btn btn-light rounded-pill w-100" to="/createpost">
+                <Link type="button" className="btn btn-primary rounded-pill w-100" to="/createpost">
                   Post
                 </Link>
               </div>

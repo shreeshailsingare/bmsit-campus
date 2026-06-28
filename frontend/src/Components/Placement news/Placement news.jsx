@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 function ProfilePage() {
 
   return (
-    <div className="container mt-2 text-white text-center">Placement News</div>
+    <>
+    <h3 className="container mt-2 text-dark text-center">Placement News</h3>
+    <div className="container mt-2 text-dark text-center">Coming soon...</div>
+    </>
   );
 }
 

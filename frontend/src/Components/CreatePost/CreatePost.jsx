@@ -51,7 +51,7 @@ function CreatePost() {
 };
 
   return (
-    <div className="container  min-vh-60 text-white ">
+    <div className="container  min-vh-60  ">
       <form onSubmit={handleSubmit} className="p-4">
         <div data-bs-theme="dark" className="d-flex justify-content-end">
           <Link to="/" className="btn-close"></Link>
@@ -60,7 +60,7 @@ function CreatePost() {
         <div className="mb-3">
           <label className="form-label">Enter text</label>
           <textarea
-            className="form-control bg-dark text-white h-50 "
+            className="form-control bg-dark text-light h-50 "
             
             rows="3"
             value={text}
@@ -80,6 +80,7 @@ function CreatePost() {
 
 
         <div className="d-flex justify-content-end align-items-center  w-100">
+          
           <button
               className="btn btn-primary mt-4 w-50 d-flex px-3 align-items-center justify-content-center"
               type="submit"

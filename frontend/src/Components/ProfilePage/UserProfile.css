@@ -12,7 +12,7 @@
 }
 
 .sidebar-links:hover{
-    background: #333;
+    background: #b7b8b9;
     border-radius: 8px;
 
 }
@@ -24,10 +24,3 @@
 }
 
 }
-
-/* @media( max-width:1280px){
- .profile_list{
-  display: none;
- }
-
-} */

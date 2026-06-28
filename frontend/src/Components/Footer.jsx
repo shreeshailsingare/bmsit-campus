@@ -18,7 +18,7 @@ function Footer() {
   };
 
   return (
-    <div className="container border-top border-secondary border-opacity-50 text-white fixed-bottom " style={{ height: "53px",backgroundColor:'black' }}>
+    <div className="container border-top border-secondary border-opacity-50 text-dark fixed-bottom " style={{ height: "53px",backgroundColor:'#f5f8fa' }}>
       <div className="row h-100 align-items-center text-center">
         <div className="col">
           <Link className="navbar-brand fs-5" to="/">
@@ -47,7 +47,7 @@ function Footer() {
         <div className="col">
           <button
             onClick={handleProfileClick}
-            className="btn btn-link text-white fs-5 p-0"
+            className="btn btn-link text-dark fs-5 p-0"
           >
             <i className="fa-solid fa-user"></i>
           </button>

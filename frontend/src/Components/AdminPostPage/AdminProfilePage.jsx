@@ -58,8 +58,8 @@ function AdminProfilePage({ currentUser, setFlash }) {
       <div className="container px-0  pt-5 mt-4">
         <div className="ps-3"> 
           
-          <h5 className="fw-bold text-white">{admin.name}</h5>
-          <p className="text-light opacity-75">@{admin.username}</p>
+          <h5 className="fw-bold text-dark">{admin.name}</h5>
+          <p className="text-dark opacity-75">@{admin.username}</p>
               
       </div>
         <hr className="text-secondary" />
@@ -67,7 +67,7 @@ function AdminProfilePage({ currentUser, setFlash }) {
 
       <div className="pb-5">
         {posts.length === 0 ? (
-          <p className="text-light text-center">No posts yet</p>
+          <p className="text-dark text-center">No posts yet</p>
         ) : (
           posts.map((post) => (
             <PostItem

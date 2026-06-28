@@ -29,10 +29,10 @@ function SignUp() {
   return (
     <div className="container-fluid min-vh-60 mt-3 d-flex justify-content-center align-items-center">
       <div
-        className="card text-light shadow-lg border-0"
-        style={{ maxWidth: "400px", width: "100%", backgroundColor: "#1e1e1e" }}
+        className="card text-dark shadow-lg border-0"
+        style={{ maxWidth: "400px", width: "100%", backgroundColor: "#F5F8FA" }}
       >
-        <div data-bs-theme="dark" className="d-flex justify-content-end mt-3 me-3">
+        <div data-bs-theme="light" className="d-flex justify-content-end mt-3 me-3">
           <Link to="/" type="button" className="btn-close" aria-label="Close" />
         </div>
         
@@ -58,7 +58,7 @@ function SignUp() {
                 className="form-control  text-dark border-secondary"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your first name"
+                placeholder="Enter your name"
                 required
               />
             </div>
@@ -98,7 +98,7 @@ function SignUp() {
 
             <div className="d-flex align-items-center justify-content-around mt-3">
               <p className="mb-0">Already have an account?</p>
-              <Link to="/login" className="text-info text-decoration-none">
+              <Link to="/login" className="text-primary text-decoration-none">
                 Login
               </Link>
             </div>

@@ -177,10 +177,10 @@ const handleSave = async () => {
 
 return (
     <>
- <div className="d-flex justify-content-between text-light opacity-75 small m-2 px-1">
+ <div className="d-flex justify-content-between text-dark opacity-75 small m-2 px-1">
    
     <span 
-    className="auth-btn px-2 py-1 text-white"
+    className="auth-btn like-btn px-2 py-1"
       role="button" 
       onClick={handleLike} 
       style={{ cursor: "pointer" }}
@@ -190,16 +190,16 @@ return (
     </span>
 
     <span 
-        className="auth-btn px-2 py-1  text-white"
+        className="auth-btn comment-btn px-2 py-1"
         role="button"
         onClick={toggleComments}
         style={{ cursor: "pointer" }}
         >
         <i className="fa-regular fa-comment pe-2"></i> {post.comments?.length || 0}
     </span>
-    {/* <span><i className="fa-regular fa-folder pe-2"></i>{post.save?.length || 0}</span> */}
+    
     <span
-      className="auth-btn px-2 py-1  text-white"
+      className="auth-btn save-btn px-2 py-1"
       role="button"
       onClick={handleSave}
       style={{ cursor: "pointer" }}
@@ -212,7 +212,7 @@ return (
 </span>
 
     <span
-    className="auth-btn px-2 py-1  text-white"
+    className="auth-btn share-btn px-2 py-1"
       role="button"
       onClick={handleShare}
       style={{ cursor: "pointer" }}
@@ -238,7 +238,7 @@ return (
 
       <input
         type="text"
-        className="form-control form-control-sm bg-dark text-white border-secondary comment-input rounded-pill"
+        className="form-control form-control-sm text-dark border-secondary comment-input rounded-pill"
         placeholder="Add a reply… (Press Enter)"
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
@@ -247,7 +247,7 @@ return (
     </div>
     <div className="mt-3 container  overflow-auto" style={{ maxHeight: "150px" }}>
       {post.comments?.length === 0 && (
-        <p className="text-light opacity-80 small">No comments yet</p>
+        <p className="text-dark opacity-80 small">No comments yet</p>
       )}
 
       {post.comments?.map((comment) => (
@@ -265,15 +265,15 @@ return (
 
           <div className="flex-grow-1">
             <div className="d-flex align-items-center gap-2">
-              <span className="fw-semibold text-white small">
+              <span className="fw-semibold text-dark small">
                 @{comment.author?.username}
               </span>
-              <span className="text-white small">
+              <span className="text-dark small">
                 · {formatTimeAgo(comment.createdAt)}
               </span>
             </div>
 
-            <p className="mb-0 text-light small">
+            <p className="mb-0 text-dark small">
               {comment.text}
             </p>
           </div>
