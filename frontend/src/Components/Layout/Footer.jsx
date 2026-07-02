@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Components/SignUp/AuthContext";
-import { useFlash } from "../Context/FlashContext";
+import { AuthContext } from "../SignUp/AuthContext";
+import { useFlash } from "../../Context/FlashContext";
 
 function Footer() {
   const { user } = useContext(AuthContext);

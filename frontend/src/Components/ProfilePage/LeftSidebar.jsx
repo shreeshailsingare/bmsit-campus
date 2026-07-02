@@ -1,26 +1,19 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import {Link} from "react-router-dom";
 import './UserProfile.css'
+import { AuthContext } from "../SignUp/AuthContext.jsx";
+
+const guestUser = {
+  name: "Guest_User",
+  username: "guest",
+  profile_image: {
+    url: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+  }
+};
 
 function Desktop_ProfilePage() {
-  const [user, setUser] = useState(null); 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    axios.get("/auth/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(res => setUser(res.data))
-    .catch(err => console.log(err));
-  }, []);
-
-    if (!user) {
-      return <p className="text-white text-center mt-5 pt-5">Please login to view your profile</p>;
-  }
+  const { user: authUser } = useContext(AuthContext);
+  const user = authUser || guestUser;
 
   return (
     <div className="container    min-vh-100 mt-0   ">

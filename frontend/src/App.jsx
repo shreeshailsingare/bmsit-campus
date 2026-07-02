@@ -1,8 +1,8 @@
 import { useState,useEffect } from 'react'
 import { Route, Routes} from 'react-router-dom';
 import './App.css'
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import Navbar from "./Components/Layout/Navbar";
+import Footer from "./Components/Layout/Footer";
 import HomePage from "./Components/HomePage/HomePage";
 import DisplayPage from "./Components/DisplayPage/DisplayPage";
 import FilterPage from "./Components/FilterPage/FilterPage";
@@ -19,7 +19,7 @@ import DeleteAccount from './Components/ProfilePage/DeleteAccount.jsx';
 import PostPage from "./Components/Post/PostPage";
 import Login from './Components/SignUp/Login';
 import SignUp from './Components/SignUp/SignUp';
-import Placementnews from './Components/Placement news/Placement news.jsx';
+import Placementnews from './Components/PlacementNews/PlacementNews.jsx';
 import { useFlash } from "./Context/FlashContext";
 import FlashMessage from "./Components/Common/FlashMessage";
 
@@ -27,6 +27,12 @@ import LeftSidebar from './Components/ProfilePage/LeftSidebar.jsx';
 
 function App() {  
     const { flash, setFlash } = useFlash();
+
+    useEffect(() => {
+      const savedTheme = localStorage.getItem("theme");
+      document.body.classList.toggle("dark-theme", savedTheme === "dark");
+    }, []);
+
   return (
      <div className="app-container"  >
       <header className="navbar-row">
@@ -51,7 +57,7 @@ function App() {
           <Route path="/filter/ieeeclubs" element={<IEEEClubsPage/>} /> 
           <Route path="/profile" element={<ProfilePage/>} /> 
           <Route path="/placementnews" element={<Placementnews/>} /> 
-          <Route path="/filter/admin/:deptId" element={<AdminProfilePage/>} /> 
+          <Route path="/filter/admin/:deptId" element={<AdminProfilePage setFlash={setFlash}/>} /> 
           <Route path="/createpost" element={<CreatePost/>} /> 
           <Route path="/editpost/:id" element={<EditPost/>} /> 
           <Route path="/profile/edit" element={<EditProfile/>} /> 

@@ -42,10 +42,12 @@ const formatTimeAgo = (date) => {
         }
       );
 
+      const likes = post.likes || [];
+
       onPostUpdate({ ...post,likes:
           res.data.action === "liked"
-            ? [...post.likes, userId]
-            : post.likes.filter((id) => id !== userId),
+            ? [...likes, userId]
+            : likes.filter((id) => id.toString() !== userId),
       });
     } catch (err) {
       console.error("Like failed", err);
@@ -89,7 +91,7 @@ const formatTimeAgo = (date) => {
 
       onPostUpdate({
         ...post,
-        comments: [...post.comments, res.data.comment],
+        comments: [...(post.comments || []), res.data.comment],
       });
 
       setCommentText("");
@@ -133,6 +135,11 @@ const formatTimeAgo = (date) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+
+    onPostUpdate({
+      ...post,
+      shares: [...(post.shares || []), userId],
+    });
   } catch (err) {
     setFlash?.({
       type: "danger",

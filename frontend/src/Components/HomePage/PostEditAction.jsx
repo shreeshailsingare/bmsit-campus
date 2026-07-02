@@ -64,15 +64,14 @@ function PostActions({ postId, onPostDeleted }) {
 
       {open && (
         <ul
-          className="dropdown-menu  dropdown-menu-end show border-secondary"
+          className="dropdown-menu post-action-menu dropdown-menu-end show border-secondary"
           style={{ position: "absolute", right: 0, zIndex: 1055 }}
         >
           <li>
             
             <Link
               to={`/editpost/${postId}`}
-              className="dropdown-item text-dark"
-              style={{backgroundColor : "#ffffff"}}
+              className="dropdown-item post-action-item text-dark"
               onClick={() => setOpen(false)}
             >
               Edit
@@ -82,9 +81,8 @@ function PostActions({ postId, onPostDeleted }) {
 
           <li>
             <button
-              className="dropdown-item text-dark"
+              className="dropdown-item post-action-item text-dark"
               onClick={handleDelete}
-              style={{backgroundColor : "#ffffff"}}
             >
               Delete
             </button>

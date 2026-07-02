@@ -1,7 +1,7 @@
 import React, { useContext,useState  } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "./SignUp/AuthContext";
-import { useFlash } from "../Context/FlashContext";
+import { AuthContext } from "../SignUp/AuthContext";
+import { useFlash } from "../../Context/FlashContext";
 import './Navbar.css'
 
 function Navbar() {

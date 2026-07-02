@@ -55,12 +55,28 @@
   border-radius: 20px;
   font-size: 14px;
   background: transparent;
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .nav-btn-outline:hover {
-  background-color: #b7b8b9;
+  background-color: #fcfcfc;
   border-color: #555;
+  transform: translateY(-2px);
+}
+
+body.dark-theme .navbar-row {
+  background-color: #0f1419;
+  border-bottom-color: #2f3336;
+}
+
+body.dark-theme .nav-btn-outline {
+  color: #f5f8fa;
+  border-color: #536471;
+}
+
+body.dark-theme .nav-btn-outline:hover {
+  background-color: #16181c;
+  border-color: #8b98a5;
 }
 
 /* SEARCH BOX */

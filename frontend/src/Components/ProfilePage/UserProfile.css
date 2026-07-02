@@ -2,6 +2,19 @@
     display: none;
 }
 
+.theme-toggle-btn {
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: #b7b8b9 !important;
+    border-radius: 8px;
+}
+
+body.dark-theme .theme-toggle-btn:hover {
+    background: #16181c !important;
+}
+
 
 
 @media (min-width: 1024px) {

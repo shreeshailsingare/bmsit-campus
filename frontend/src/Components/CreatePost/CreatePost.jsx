@@ -79,7 +79,13 @@ function CreatePost() {
         />
 
 
-        <div className="d-flex justify-content-end align-items-center  w-100">
+        <div className="d-flex justify-content-end align-items-center gap-2 w-100">
+          <Link
+            to="/"
+            className="btn btn-outline-secondary mt-4 w-50 d-flex px-3 align-items-center justify-content-center"
+          >
+            Cancel
+          </Link>
           
           <button
               className="btn btn-primary mt-4 w-50 d-flex px-3 align-items-center justify-content-center"

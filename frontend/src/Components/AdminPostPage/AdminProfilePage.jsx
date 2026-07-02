@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import PostItem from "../HomePage/PostItem";
+import { AuthContext } from "../SignUp/AuthContext";
 
 
-function AdminProfilePage({ currentUser, setFlash }) {
+function AdminProfilePage({ setFlash }) {
   const { deptId } = useParams();
+  const { user: currentUser } = useContext(AuthContext);
   const [admin, setAdmin] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

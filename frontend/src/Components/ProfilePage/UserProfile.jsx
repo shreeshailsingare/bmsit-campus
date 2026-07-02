@@ -1,47 +1,24 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import {Link} from "react-router-dom";
 import './UserProfile.css'
-import Desktop_ProfilePage from './LeftSidebar.jsx';
+import { AuthContext } from "../SignUp/AuthContext.jsx";
 
-function ProfilePage() { 
-  const [user, setUser] = useState({
+const guestUser = {
   name: "Guest_User",
   username: "guest",
   profile_image: {
     url: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
   }
-});
+};
 
+function ProfilePage() { 
+  const { user: authUser } = useContext(AuthContext);
+  const user = authUser || guestUser;
 
-  useEffect(() => {
-  const token = localStorage.getItem("token");
-
-  // If no token → stay as guest
-  if (!token) return;
-
-  axios.get("/auth/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-  .then(res => {
-    if (res.data) {
-      setUser(res.data); // real logged-in user
-    }
-  })
-  .catch(err => {
-    console.log(err);
-    setUser({
-      name: "Guest_User",
-      username: "guest",
-      profile_image: {
-        url: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
-      }
-    });
-  });
-}, []);
+  const handleThemeToggle = () => {
+    const isDark = document.body.classList.toggle("dark-theme");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
 
   return (
     <div className="container    min-vh-60 mt-0   ">
@@ -84,10 +61,10 @@ function ProfilePage() {
                 <i className="fa-solid fa-trash pe-2"></i>
                 Delete Account
             </Link>
-            <a href="#" className="list-group-item text-dark  " style={{backgroundColor:'#F5F8FA' }}>
+            <button type="button" onClick={handleThemeToggle} className="list-group-item text-dark text-start border-0 theme-toggle-btn" style={{backgroundColor:'#F5F8FA' }}>
                 <i className="fa-solid fa-circle-half-stroke pe-2"></i>
                 Theme
-            </a>
+            </button>
           </div>
 
         </div>
@@ -151,10 +128,10 @@ function ProfilePage() {
                 </>
               )}
             
-            <Link to='/profile/theme' className="text-dark text-decoration-none p-2 sidebar-links">
+            <button type="button" onClick={handleThemeToggle} className="text-dark text-decoration-none p-2 sidebar-links theme-toggle-btn bg-transparent border-0 text-start">
             <i className="fa-solid fa-circle-half-stroke pe-4"></i>
              <span className="profile_list">Theme</span> 
-            </Link>
+            </button>
 
            {user && user.role === "Admin" && (
               <div className="d-flex justify-content-center mt-4 profile_list w-100">
