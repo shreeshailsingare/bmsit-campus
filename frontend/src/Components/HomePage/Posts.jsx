@@ -4,11 +4,13 @@ import PostItem from "./PostItem";
 
 function Posts({ currentUser, setFlash }) {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("/posts")
       .then(res => setPosts(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
   }, []);
 
   const updatePost = (updatedPost) => {
@@ -23,19 +25,29 @@ function Posts({ currentUser, setFlash }) {
 
   return (
     <div className=" mt-3  border-top border-secondary border-opacity-50">
-      {posts.map(post => (
-        <PostItem
-          key={post._id}
-          post={post}
-          onPostUpdate={updatePost}
-          onPostDelete={deletePost}
-          currentUser={currentUser}
-          setFlash={setFlash}
-        />
-      ))}
-      <div className="text-center text-secondary mt-4 mb-5 pb-5">
-        you have reached the end of the posts
-      </div>
+      {loading ? (
+        <div className="feed-loading d-flex justify-content-center align-items-center py-5 my-5">
+          <div className="spinner-border feed-loading-spinner" role="status">
+            <span className="visually-hidden">Loading posts...</span>
+          </div>
+        </div>
+      ) : (
+        <>
+          {posts.map(post => (
+            <PostItem
+              key={post._id}
+              post={post}
+              onPostUpdate={updatePost}
+              onPostDelete={deletePost}
+              currentUser={currentUser}
+              setFlash={setFlash}
+            />
+          ))}
+          <div className="text-center text-secondary mt-4 mb-5 pb-5">
+            you have reached the end of the posts
+          </div>
+        </>
+      )}
     </div>
   );
 }

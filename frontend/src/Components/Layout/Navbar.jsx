@@ -19,8 +19,9 @@ function Navbar() {
     <nav className="navbar-row">
       <div className="navbar-container  ">
              
-        <Link className="nav-logo" to="/">
-          <span className="text-danger fw-bold fs-4">BMSIT</span> <span className="text-primary fw-bold fs-4">Campus</span>
+        <Link className="nav-logo campus-brand" to="/">
+          <span className="text-danger brand-bmsit fs-4">BMSIT</span>{" "}
+          <span className="text-primary brand-campus fs-4">Campus</span>
         </Link>
 
         <div className="nav-actions">

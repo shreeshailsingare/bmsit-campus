@@ -61,7 +61,7 @@ function ProfilePage() {
                 <i className="fa-solid fa-trash pe-2"></i>
                 Delete Account
             </Link>
-            <button type="button" onClick={handleThemeToggle} className="list-group-item text-dark text-start border-0 theme-toggle-btn" style={{backgroundColor:'#F5F8FA' }}>
+            <button type="button" onClick={handleThemeToggle} className="list-group-item text-dark text-start border-0 theme-toggle-btn">
                 <i className="fa-solid fa-circle-half-stroke pe-2"></i>
                 Theme
             </button>
@@ -128,7 +128,7 @@ function ProfilePage() {
                 </>
               )}
             
-            <button type="button" onClick={handleThemeToggle} className="text-dark text-decoration-none p-2 sidebar-links theme-toggle-btn bg-transparent border-0 text-start">
+            <button type="button" onClick={handleThemeToggle} className="text-dark text-decoration-none p-2 sidebar-links theme-toggle-btn border-0 text-start">
             <i className="fa-solid fa-circle-half-stroke pe-4"></i>
              <span className="profile_list">Theme</span> 
             </button>

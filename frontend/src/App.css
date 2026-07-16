@@ -123,6 +123,20 @@ body.dark-theme .post-action-item:hover {
   background-color: #1f2933 !important;
 }
 
+.feed-loading {
+  min-height: 240px;
+}
+
+.feed-loading-spinner {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #1d9bf0;
+}
+
+body.dark-theme .feed-loading-spinner {
+  color: #1d9bf0;
+}
+
 /* postPage */
 .post-image-wrapper {
   width: 100%;

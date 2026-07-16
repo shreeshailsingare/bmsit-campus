@@ -29,14 +29,25 @@
 /* Logo styling */
 .nav-logo {
   color: white;
-  font-weight: bold;
   font-size: 24px;
   text-decoration: none;
-  letter-spacing: 0.5px;
+}
+
+.campus-brand {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.campus-brand .brand-bmsit {
+  font-weight: 800;
+}
+
+.campus-brand .brand-campus {
+  font-weight: 600;
 }
 
 .nav-logo:hover {
-  color: #1DA1F2; 
+  opacity: 0.85;
 }
 
 /* Right actions */

@@ -3,12 +3,18 @@
 }
 
 .theme-toggle-btn {
+    background-color: #F5F8FA;
     transition: background-color 0.2s ease;
 }
 
 .theme-toggle-btn:hover {
     background: #b7b8b9 !important;
     border-radius: 8px;
+}
+
+body.dark-theme .theme-toggle-btn {
+    background-color: #0f1419 !important;
+    color: #f5f8fa !important;
 }
 
 body.dark-theme .theme-toggle-btn:hover {
@@ -28,6 +34,10 @@ body.dark-theme .theme-toggle-btn:hover {
     background: #b7b8b9;
     border-radius: 8px;
 
+}
+
+body.dark-theme .sidebar-links:hover {
+    background: #16181c !important;
 }
 }
 
