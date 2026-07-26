@@ -18,7 +18,7 @@ function Footer() {
   };
 
   return (
-    <div className="container border-top border-secondary border-opacity-50 text-dark fixed-bottom " style={{ height: "53px",backgroundColor:'#f5f8fa' }}>
+    <div className="container border-top border-secondary border-opacity-50 text-dark fixed-bottom" style={{ height: "53px", backgroundColor: "#f5f8fa" }}>
       <div className="row h-100 align-items-center text-center">
         <div className="col">
           <Link className="navbar-brand fs-5" to="/">
@@ -38,9 +38,17 @@ function Footer() {
           </Link>
         </div>
 
-           <div className="col">
+        {user?.role?.toLowerCase() === "admin" && (
+          <div className="col">
+            <Link className="navbar-brand fs-5" to="/createpost">
+              <i className="fa-solid fa-plus-circle"></i>
+            </Link>
+          </div>
+        )}
+
+        <div className="col">
           <Link className="navbar-brand fs-5" to="/placementnews">
-            <i class="fa-solid fa-briefcase"></i>
+            <i className="fa-solid fa-briefcase"></i>
           </Link>
         </div>
 
@@ -51,7 +59,6 @@ function Footer() {
           >
             <i className="fa-solid fa-user"></i>
           </button>
-
         </div>
       </div>
     </div>

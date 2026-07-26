@@ -11,6 +11,7 @@ const posts = require("./routes/post.js");
 const users = require("./routes/user.js");
 const auths = require("./routes/auth.js");
 const admins = require("./routes/admin.js");
+const aiRoutes = require("./routes/ai");
 
 const ExpressError = require("./utils/ExpressError.js");
 
@@ -22,8 +23,8 @@ app.set("trust proxy", 1);
 
 
 app.use(cors({
-  origin:process.env.FRONTEND_URL,
-  // origin:" http://localhost:5173",
+  // origin:process.env.FRONTEND_URL,
+  origin:"http://localhost:5173",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -51,6 +52,8 @@ app.use("/posts", posts);
 app.use("/user", users);
 app.use("/auth", auths);
 app.use("/admin", admins);
+app.use("/ai", aiRoutes); 
+
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;

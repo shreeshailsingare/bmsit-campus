@@ -3,7 +3,12 @@ const Post=require("../models/Post.js");
 const ExpressError = require("../utils/ExpressError.js");
 
 module.exports.createPost = async (req, res) => {
-  const { text } = req.body;
+  // const { text } = req.body;
+  const {
+    text,
+    category,
+    tags
+} = req.body;
 
   if (!text || !text.trim()) {
     throw new ExpressError(400, "Post text is required");
@@ -15,11 +20,20 @@ module.exports.createPost = async (req, res) => {
     contentType: file.mimetype
   }));
 
+  // const newPost = new Post({
+  //   author: req.user.id,
+  //   text,
+  //   media
+  // });
   const newPost = new Post({
     author: req.user.id,
     text,
+    category,
+    tags: tags
+        ? tags.split(",").map(tag => tag.trim())
+        : [],
     media
-  });
+});
 
   const savedPost = await newPost.save();
   res.status(201).json(savedPost);
@@ -53,7 +67,13 @@ module.exports.showPost=async (req, res) => {
 
 module.exports.editPost=async (req, res) => {
     const { id } = req.params;
-    const { text } = req.body;
+    // const { text } = req.body;
+    const {
+    text,
+    category,
+    tags
+} = req.body;
+
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new ExpressError(400, "Invalid post id");
     }
@@ -64,13 +84,32 @@ module.exports.editPost=async (req, res) => {
     if (text) {
       updateData.text = text.trim();
     }
-    if (req.file) {
-      updateData.image = {
-        url: req.file.path,
-        filename: req.file.filename,
-        contentType: req.file.mimetype
-      };
+
+    if (category) {
+    updateData.category = category;
     }
+
+    if (tags !== undefined) {
+        updateData.tags = tags
+            .split(",")
+            .map(tag => tag.trim());
+    }
+
+    // if (req.file) {
+    //   updateData.image = {
+    //     url: req.file.path,
+    //     filename: req.file.filename,
+    //     contentType: req.file.mimetype
+    //   };
+    // }
+
+    if (req.files?.length) {
+    updateData.media = req.files.map(file => ({
+        url: file.path,
+        filename: file.filename,
+        contentType: file.mimetype
+    }));
+}
 
     const updatedPost = await Post.findByIdAndUpdate(
       id,

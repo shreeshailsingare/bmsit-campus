@@ -9,6 +9,10 @@ function CreatePost() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState([]);
+
+  const [category, setCategory] = useState("General");
+  const [tags, setTags] = useState("");
+
   const { setFlash } = useFlash();
   const handleSubmit = async (e) => {
   e.preventDefault();
@@ -16,6 +20,8 @@ function CreatePost() {
   const token = localStorage.getItem("token");
   const formData = new FormData();
   formData.append("text", text);
+  formData.append("category", category);
+  formData.append("tags", tags);
 
   files.forEach((file) => {
     formData.append("media", file);
@@ -67,6 +73,48 @@ function CreatePost() {
             onChange={(e) => setText(e.target.value)}
           ></textarea>
         </div>
+
+        <div className="mb-3">
+          <label className="form-label">
+              Category
+          </label>
+
+          <select
+              className="form-select bg-dark text-white"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+          >
+
+              <option>General</option>
+              <option>Placement</option>
+              <option>Internship</option>
+              <option>Department</option>
+              <option>Event</option>
+              <option>Hackathon</option>
+              <option>Sports</option>
+              <option>Club</option>
+              <option>Library</option>
+              <option>Announcement</option>
+              <option>Achievement</option>
+
+          </select>
+      </div>
+
+      <div className="mb-3">
+
+          <label className="form-label">
+              Tags
+          </label>
+
+          <input
+              type="text"
+              className="form-control bg-dark text-white"
+              placeholder="amazon,sde,internship"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+          />
+
+      </div>
 
        
 

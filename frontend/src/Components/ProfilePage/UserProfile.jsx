@@ -15,11 +15,6 @@ function ProfilePage() {
   const { user: authUser } = useContext(AuthContext);
   const user = authUser || guestUser;
 
-  const handleThemeToggle = () => {
-    const isDark = document.body.classList.toggle("dark-theme");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-
   return (
     <div className="container    min-vh-60 mt-0   ">
        {/* FOR MOBILE */}
@@ -61,10 +56,6 @@ function ProfilePage() {
                 <i className="fa-solid fa-trash pe-2"></i>
                 Delete Account
             </Link>
-            <button type="button" onClick={handleThemeToggle} className="list-group-item text-dark text-start border-0 theme-toggle-btn">
-                <i className="fa-solid fa-circle-half-stroke pe-2"></i>
-                Theme
-            </button>
           </div>
 
         </div>
@@ -128,11 +119,6 @@ function ProfilePage() {
                 </>
               )}
             
-            <button type="button" onClick={handleThemeToggle} className="text-dark text-decoration-none p-2 sidebar-links theme-toggle-btn border-0 text-start">
-            <i className="fa-solid fa-circle-half-stroke pe-4"></i>
-             <span className="profile_list">Theme</span> 
-            </button>
-
            {user && user.role === "Admin" && (
               <div className="d-flex justify-content-center mt-4 profile_list w-100">
                 <Link type="button" className="btn btn-primary rounded-pill w-100" to="/createpost">

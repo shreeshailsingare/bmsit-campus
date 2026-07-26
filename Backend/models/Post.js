@@ -50,6 +50,28 @@ const postSchema = new Schema({
     required: true
    },
 
+    category: {
+    type: String,
+    enum: [
+      "General",
+      "Placement",
+      "Internship",
+      "Department",
+      "Event",
+      "Hackathon",
+      "Sports",
+      "Club",
+      "Library",
+      "Announcement",
+      "Achievement",
+    ],
+    default: "General"
+  },
+
+  tags: [{
+    type: String
+  }],
+
   media: [
   {
     filename: String,

@@ -64,7 +64,7 @@ const formatTimeAgo = (date) => {
   };
 
   const handleCommentSubmit = async (e) => {
-    if (e.key !== "Enter") return;
+    if (e?.key && e.key !== "Enter") return;
 
     const token = localStorage.getItem("token");
 
@@ -243,14 +243,25 @@ return (
         height="30"
       />
 
-      <input
-        type="text"
-        className="form-control form-control-sm text-dark border-secondary comment-input rounded-pill"
-        placeholder="Add a reply… (Press Enter)"
-        value={commentText}
-        onChange={(e) => setCommentText(e.target.value)}
-        onKeyDown={handleCommentSubmit}
-      />
+      <div className="d-flex align-items-center gap-1 flex-grow-1">
+        <input
+          type="text"
+          className="form-control form-control-sm text-dark border-secondary comment-input rounded-pill"
+          placeholder="Add a reply… (Press Enter)"
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+          onKeyDown={handleCommentSubmit}
+        />
+        <button
+          className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center comment-send-btn"
+          style={{ width: "32px", height: "32px", minWidth: "32px" }}
+          onClick={handleCommentSubmit}
+          disabled={!commentText.trim()}
+          title="Send"
+        >
+          <i className="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
     <div className="mt-3 container  overflow-auto" style={{ maxHeight: "150px" }}>
       {post.comments?.length === 0 && (

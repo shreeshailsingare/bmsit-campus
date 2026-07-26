@@ -66,10 +66,6 @@ function Desktop_ProfilePage() {
                 <span className="profile_list">Delete Account</span>
             </Link>
             
-            <Link to='/profile/theme' className="text-white text-decoration-none py-2">
-            <i className="fa-solid fa-circle-half-stroke pe-4"></i>
-             <span className="profile_list">Theme</span> 
-            </Link>
             <div className="d-flex justify-content-center mt-4 profile_list w-100">
               <button type="button" className="btn btn-light rounded-pill w-100">Post</button>
             </div>

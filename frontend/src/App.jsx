@@ -24,6 +24,7 @@ import { useFlash } from "./Context/FlashContext";
 import FlashMessage from "./Components/Common/FlashMessage";
 
 import LeftSidebar from './Components/ProfilePage/LeftSidebar.jsx';
+import AIChat from "./Components/AIAssistant/AIChat";
 
 function App() {  
     const { flash, setFlash } = useFlash();
@@ -77,7 +78,7 @@ function App() {
       <div className="footer">
         <Footer />
       </div>
-      
+      <AIChat />
     </div>
   )
 }

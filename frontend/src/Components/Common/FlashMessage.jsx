@@ -1,55 +1,40 @@
+const flashStyles = {
+  info: { background: "#0dcaf0", color: "#052c33" },
+  warning: { background: "#ffc107", color: "#332701" },
+  danger: { background: "#dc3545", color: "#fff" },
+  error: { background: "#dc3545", color: "#fff" },
+  success: { background: "#198754", color: "#fff" },
+};
+
 function FlashMessage({ flash, clearFlash }) {
   if (!flash.message) return null;
 
-  const flashStyles = {
-    info: {
-      backgroundColor: "#0dcaf0",
-      color: "#052c33",
-    },
-    warning: {
-      backgroundColor: "#ffc107",
-      color: "#332701",
-    },
-    error: {
-      backgroundColor: "#dc3545",
-      color: "#ffffff",
-    },
-    danger: {
-      backgroundColor: "#dc3545",
-      color: "#ffffff",
-    },
-    success: {
-      backgroundColor: "#198754",
-      color: "#ffffff",
-    },
-  };
-
-  const alertType = flash.type === "error" ? "danger" : flash.type || "info";
   const style = flashStyles[flash.type] || flashStyles.info;
-  const isDarkClose = style.color === "#ffffff";
 
   return (
     <div
-      className="position-fixed top-0 start-50 translate-middle-x mt-3"
-      style={{ zIndex: 2000, width: "90%", maxWidth: "600px " }}
+      style={{
+        position: "fixed",
+        bottom: 16,
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 2000,
+        ...style,
+        padding: "10px 20px",
+        borderRadius: 8,
+        fontSize: 14,
+        fontWeight: 500,
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+        cursor: "pointer",
+        whiteSpace: "nowrap",
+      }}
+      onClick={clearFlash}
     >
-      <div
-        className={`alert alert-${alertType} alert-dismissible fade show`}
-        style={{
-          ...style,
-          borderRadius: "10px",
-          textAlign: "center",
-          border: "none",
-        }}
-        role="alert"
-      >
-        {flash.message}
-        <button
-          type="button"
-          className={`btn-close ${isDarkClose ? "btn-close-white" : ""}`}
-          onClick={clearFlash}
-        ></button>
-      </div>
+      <span>{flash.message}</span>
+      <span style={{ fontSize: 18, lineHeight: 1, opacity: 0.8 }}>✕</span>
     </div>
   );
 }

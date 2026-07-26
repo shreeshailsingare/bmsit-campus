@@ -14,9 +14,6 @@ function HomePage({ setFlash }) {
        <>
        <Event/>
        <Posts currentUser={user} setFlash={setFlash}/>
-  
-             {user?.role?.toLowerCase() === "admin" && <div className="d-block d-lg-none">
-  <PostButton /></div>}
        </>
     )
 }

@@ -12,6 +12,9 @@ function EditPost() {
   const { setFlash } = useFlash();
   const [submitting, setSubmitting] = useState(false);
 
+  const [category, setCategory] = useState("General");
+  const [tags, setTags] = useState("");
+
 useEffect(() => {
   if (!id) {
     setFlash({
@@ -26,6 +29,10 @@ useEffect(() => {
     try {
       const res = await axios.get(`/posts/${id}`);
       setText(res.data.text);
+      setCategory(res.data.category || "General");
+      setTags((res.data.tags || []).join(", "));
+
+
     } catch (err) {
       setFlash({
         type: "danger",
@@ -53,6 +60,9 @@ useEffect(() => {
     setSubmitting(true);
     const formData = new FormData();
     formData.append("text", text);
+    formData.append("category", category);
+    formData.append("tags", tags);
+
     if (file) formData.append("media", file);
 
     try {
@@ -107,6 +117,48 @@ useEffect(() => {
             style={{height:'150px'}}
           />
         </div>
+
+        <div className="mb-3">
+        <label className="form-label">
+            Category
+        </label>
+
+        <select
+            className="form-select bg-dark text-white"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+        >
+
+            <option>General</option>
+            <option>Placement</option>
+            <option>Internship</option>
+            <option>Department</option>
+            <option>Event</option>
+            <option>Hackathon</option>
+            <option>Sports</option>
+            <option>Club</option>
+            <option>Library</option>
+            <option>Announcement</option>
+            <option>Achievement</option>
+
+        </select>
+    </div>
+
+    <div className="mb-3">
+
+        <label className="form-label">
+            Tags
+        </label>
+
+        <input
+            type="text"
+            className="form-control bg-dark text-white"
+            placeholder="amazon,sde,internship"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+        />
+
+    </div>
 
         <div className="mb-3">
           <label className="form-label">Update Image (optional)</label>

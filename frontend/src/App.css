@@ -63,6 +63,39 @@ body.dark-theme .comment-input::placeholder {
   color: rgba(245, 248, 250, 0.65);
 }
 
+.comment-send-btn {
+  border: 1px solid #536471;
+  color: #536471;
+  background: transparent;
+}
+
+.comment-send-btn:hover:not(:disabled) {
+  background: #e8f5fe;
+  color: #1d9bf0;
+  border-color: #1d9bf0;
+}
+
+.comment-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+body.dark-theme .comment-send-btn {
+  border-color: #536471;
+  color: #f5f8fa;
+  background: transparent;
+}
+
+body.dark-theme .comment-send-btn:hover:not(:disabled) {
+  background: rgba(29, 155, 240, 0.1);
+  color: #1d9bf0;
+  border-color: #1d9bf0;
+}
+
+body.dark-theme .comment-send-btn:disabled {
+  opacity: 0.3;
+}
+
 body.dark-theme .center-feed {
   border-left-color: #2f3336 !important;
   border-right-color: #2f3336 !important;

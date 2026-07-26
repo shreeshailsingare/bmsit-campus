@@ -1,4 +1,4 @@
-import React, { useContext,useState  } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../SignUp/AuthContext";
 import { useFlash } from "../../Context/FlashContext";
@@ -14,6 +14,14 @@ function Navbar() {
     setFlash({ type: "success", message: "Logged out successfully" });
   };
 
+  const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
+
+  const handleThemeToggle = () => {
+    const newDark = !isDark;
+    setIsDark(newDark);
+    document.body.classList.toggle("dark-theme", newDark);
+    localStorage.setItem("theme", newDark ? "dark" : "light");
+  };
 
   return (
     <nav className="navbar-row">
@@ -37,6 +45,14 @@ function Navbar() {
               Login
             </Link>
           )}
+
+          <button
+            className="nav-btn-outline theme-toggle-navbar"
+            onClick={handleThemeToggle}
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <i className={`fa-solid ${isDark ? "fa-sun" : "fa-moon"}`}></i>
+          </button>
         </div>
 
       </div>

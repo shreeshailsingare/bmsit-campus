@@ -90,6 +90,16 @@ body.dark-theme .nav-btn-outline:hover {
   border-color: #8b98a5;
 }
 
+.theme-toggle-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 34px;
+}
+
 /* SEARCH BOX */
 .nav-search {
   flex: 1;
