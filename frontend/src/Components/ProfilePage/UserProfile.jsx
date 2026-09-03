@@ -62,73 +62,107 @@ function ProfilePage() {
       </div>
       </div>
 
- {/* FOR DESKTOP */}
-      <div className="row text-dark   Desktop-profile-page">
-        <div className="row mb-2">
-        <div className="col-5">
-          <img
-            src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"  }
-            className="rounded-circle mb-2"
-            width="80"
-            height="80"
-            alt="profile"
-          />
-        </div>
-
-          <div className="col-6 p-2 profile_list">
-          <h5 className="fw-bold mb-0  w-100">{user.name}</h5>
-          <p className="">@{user.username }</p>       
-          <div/>
-          
-        </div>
-      </div>
-
-        <div className="row mt-3">
-          <div className="col-12 justify-content-start text-start fs-4 d-flex flex-column " >
-            <Link className=" fs-4 text-dark text-decoration-none p-2 sidebar-links  " to="/">
-              <i className="fa-solid fa-house pe-4"> </i> 
-             <span className="profile_list">Home</span> 
-            </Link>
-
-            <Link className="fs-4 text-dark text-decoration-none p-2 sidebar-links " to="/placementnews">
-               <i className="fa-solid fa-briefcase pe-4"></i>
-                <span className="profile_list">Placement </span>
-            </Link>
-
-            <Link className="fs-4 text-dark text-decoration-none p-2 sidebar-links " to="/filter">
-               <i className="fa-solid fa-filter pe-4"></i>
-                <span className="profile_list">Filter</span>
-            </Link>
-              
-              {user.username !== "guest" && (
-                <>
-                  <Link to="/profile/saved" className="text-dark text-decoration-none p-2 sidebar-links">
-                    <i className="fa-regular fa-folder pe-4"></i>
-                    <span className="profile_list">Saved Posts</span>
-                  </Link>
-
-                  <Link to="/profile/edit" className="text-dark text-decoration-none p-2 sidebar-links">
-                    <i className="fa-regular fa-pen-to-square pe-4"></i>
-                    <span className="profile_list">Edit</span>
-                  </Link>
-
-                  <Link to="/profile/delete" className="text-dark text-decoration-none p-2 sidebar-links">
-                    <i className="fa-solid fa-trash pe-4"></i>
-                    <span className="profile_list">Delete</span>
-                  </Link>
-                </>
-              )}
-            
-           {user && user.role === "Admin" && (
-              <div className="d-flex justify-content-center mt-4 profile_list w-100">
-                <Link type="button" className="btn btn-primary rounded-pill w-100" to="/createpost">
-                  Post
-                </Link>
-              </div>
-            )}
-           
+  {/* FOR DESKTOP */}
+       <div className="row text-dark   Desktop-profile-page">
+        <div className="cover-banner"></div>
+        <div className="row mb-2 profile-header-row">
+          <div className="col-5 profile-picture-col">
+            <img
+              src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"  }
+              className="rounded-circle profile-picture"
+              width="120"
+              height="120"
+              alt="profile"
+            />
           </div>
 
+          <div className="col-6 p-2 profile_list">
+            <h5 className="fw-bold mb-0 w-100">{user.name}</h5>
+            <p className="mb-0">@{user.username}</p>
+            <p className="mb-0 small text-muted">{user.department || "Department"}</p>
+            <p className="mb-0 small text-muted">{user.college || "BMSIT Campus"}</p>
+            <div className="mt-2">
+              <Link to="/profile/edit" className="btn btn-primary btn-sm rounded-pill fw-bold px-3">
+                Edit Profile
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-4 profile-stats-row">
+          <div className="col-3">
+            <div className="profile-stat-card text-center">
+              <h4 className="fw-bold mb-1">{user.posts || 0}</h4>
+              <p className="mb-0 text-muted small">Posts</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="profile-stat-card text-center">
+              <h4 className="fw-bold mb-1">{user.saved_posts || 0}</h4>
+              <p className="mb-0 text-muted small">Saved Posts</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="profile-stat-card text-center">
+              <h4 className="fw-bold mb-1">{user.likes || 0}</h4>
+              <p className="mb-0 text-muted small">Likes</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="profile-stat-card text-center">
+              <h4 className="fw-bold mb-1">{user.achievements || 0}</h4>
+              <p className="mb-0 text-muted small">Achievements</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-4 profile-tabs-row">
+          <div className="col-12">
+            <ul className="nav nav-tabs profile-tabs">
+              <li className="nav-item">
+                <Link to="/" className="nav-link active">Posts</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/profile/saved" className="nav-link">Saved Posts</Link>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">Activity</span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">Achievements</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-12">
+            <div className="create-post-card">
+              <Link
+                to="/createpost"
+                className="composer-avatar"
+                aria-label="Create post"
+              >
+                <img
+                  src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
+                  alt="avatar"
+                />
+              </Link>
+              <Link
+                to="/createpost"
+                className="composer-input"
+                aria-label="What's happening?"
+              >
+                What's happening?
+              </Link>
+              <Link
+                to="/createpost"
+                className="btn btn-primary rounded-pill fw-bold px-4 composer-post-btn"
+              >
+                Post
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

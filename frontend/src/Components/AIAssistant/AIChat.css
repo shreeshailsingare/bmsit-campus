@@ -1,38 +1,27 @@
-/* Floating AI Chat Button (all devices) */
+/* =============================================
+   AI Assistant — Responsive Flexbox Layout
+   ============================================= */
 
+/* =============================================
+   Desktop (≥1024px) — Floating Assistant
+   ============================================= */
+
+/* Floating button hidden on desktop — chat is a floating window */
 .ai-floating-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 55px;
-  height: 55px;
-  border: none;
-  border-radius: 50%;
-  background: #0d6efd;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
-  z-index: 9999;
+  display: none;
 }
 
-.ai-floating-btn:hover {
-  transform: scale(1.08);
-  background: #0b5ed7;
-}
-
-/* Chat Window */
-
+/* Chat Window — fixed floating assistant */
 .ai-chat-window {
   position: fixed;
-  bottom: 100px;
-  right: 25px;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
 
-  width: 420px;
-  height: 700px;
-  max-width: calc(100vw - 30px);
-  max-height: calc(100vh - 30px);
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  height: calc(100vh - 120px);
+  max-height: calc(100vh - 120px);
 
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -45,14 +34,17 @@
   display: flex;
   flex-direction: column;
 
-  z-index: 9999;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Chat Body */
-
 .ai-body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 
   padding: 0;
 
@@ -63,21 +55,22 @@
 }
 
 /* Message Bubble */
-
 .user-message,
 .ai-message {
-  max-width: 90%;
+  max-width: 85%;
   padding: 12px 15px;
   border-radius: 18px;
   margin-bottom: 12px;
   white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   word-break: break-word;
   font-size: 15px;
   line-height: 1.5;
+  box-sizing: border-box;
 }
 
 /* User */
-
 .user-message {
   align-self: flex-end;
 
@@ -88,7 +81,6 @@
 }
 
 /* AI */
-
 .ai-message {
   align-self: flex-start;
 
@@ -102,7 +94,6 @@
 }
 
 /* Scrollbar */
-
 .ai-body::-webkit-scrollbar {
   width: 6px;
 }
@@ -116,43 +107,55 @@
   background: transparent;
 }
 
-/* Desktop styles */
-@media (min-width: 1024px) {
+/* =============================================
+   Mobile (<1024px) — Floating Popup
+   ============================================= */
+@media (max-width: 1023px) {
+  /* Floating button visible when chat is closed */
   .ai-floating-btn {
-    bottom: 30px;
-    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    z-index: 9999;
   }
-}
 
-/* Mobile - Fullscreen when AI Chat opens */
-@media (max-width: 768px) {
+  .ai-floating-btn:hover {
+    transform: scale(1.08);
+    background: #0b5ed7;
+  }
 
+  /* Chat window — fullscreen when opened on mobile */
   .ai-chat-window {
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: none !important;
-    max-height: none !important;
-    border-radius: 0 !important;
-    z-index: 998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    z-index: 9998;
   }
-
-  .ai-floating-btn {
-    width: 50px;
-    height: 50px;
-    right: 15px;
-    bottom: 70px;
-    font-size: 22px;
-    z-index: 998;
-  }
-
 }
 
-/* Dark Theme */
-
+/* =============================================
+   Dark Theme
+   ============================================= */
 body.dark-theme .ai-chat-window {
   background: #16181c;
 }

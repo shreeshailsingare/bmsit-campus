@@ -4,7 +4,7 @@ import { AuthContext } from "../SignUp/AuthContext";
 import { useFlash } from "../../Context/FlashContext";
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({ showAI, setShowAI }) {
   const { user, logout } = useContext(AuthContext);
   const { setFlash } = useFlash();
   const location = useLocation();
@@ -20,6 +20,15 @@ function Navbar() {
     logout();
     setFlash({ type: "success", message: "Logged out successfully" });
     setMobileMenuOpen(false);
+  };
+
+  const handleProfileClick = (e) => {
+    // Verify the user is authenticated before allowing navigation to /profile
+    if (!user) {
+      e.preventDefault();
+      setFlash({ type: "error", message: "Please log in to access your profile." });
+      navigate("/login");
+    }
   };
 
   const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
@@ -148,6 +157,17 @@ function Navbar() {
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
 
+          {/* Campus AI */}
+          <button
+            className="nav-icon-btn campus-ai-btn"
+            onClick={() => setShowAI(prev => !prev)}
+            title="Campus AI"
+            aria-label="Toggle Campus AI"
+          >
+            <i className="fa-solid fa-robot"></i>
+            <span>Campus AI</span>
+          </button>
+
           {/* Theme Toggle */}
           <button
             className="nav-icon-btn theme-btn"
@@ -161,12 +181,20 @@ function Navbar() {
           {/* Auth */}
           {user ? (
             <div className="nav-user-menu">
-              <Link to="/profile" className="nav-user-avatar" title={user.name}>
+              <Link to="/profile" className="nav-user-avatar" title={user.name} onClick={handleProfileClick}>
                 <img
                   src={user.profile_image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
                   alt="profile"
                 />
               </Link>
+              <button
+                className="nav-icon-btn nav-logout-btn"
+                onClick={handleLogout}
+                title="Logout"
+                aria-label="Logout"
+              >
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </button>
             </div>
           ) : (
             <Link to="/login" className="nav-btn-login" aria-label="Login">

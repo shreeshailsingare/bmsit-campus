@@ -13,7 +13,7 @@
   --border-light: #dfe3e8;
 
   /* Layout */
-  --navbar-height: 60px;
+  --navbar-height: 56px;
   --sidebar-width: 260px;
   --feed-max-width: 650px;
   --right-sidebar-width: 320px;
@@ -50,6 +50,7 @@ body {
   color: black;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* =============================================
@@ -155,12 +156,14 @@ body {
 
   .right-sidebar {
     grid-area: right;
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: sticky;
     top: var(--navbar-height);
     height: calc(100vh - var(--navbar-height));
     overflow-y: auto;
     padding: var(--spacing-lg) 0;
+    min-width: 0;
   }
 
   .footer {

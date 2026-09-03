@@ -116,6 +116,7 @@ import AIChat from "./Components/AIAssistant/AIChat";
 
 function App() {  
     const { flash, setFlash } = useFlash();
+    const [showAI, setShowAI] = useState(false);
 
     useEffect(() => {
       const savedTheme = localStorage.getItem("theme");
@@ -125,7 +126,7 @@ function App() {
   return (
      <div className="app-container"  >
       <header className="navbar-row">
-        <Navbar />
+        <Navbar showAI={showAI} setShowAI={setShowAI} />
       </header>
       <div className="left-sidebar">
         <LeftSidebar />
@@ -166,7 +167,7 @@ function App() {
       <div className="footer">
         <Footer />
       </div>
-      <AIChat />
+      <AIChat showAI={showAI} onClose={() => setShowAI(false)} />
     </div>
   )
 }
