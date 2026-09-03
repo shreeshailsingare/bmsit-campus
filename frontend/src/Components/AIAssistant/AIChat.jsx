@@ -131,10 +131,6 @@ function AIChat({ showAI, onClose }) {
       🤖
     </button>
   );
-
-  // On mobile (<1024px), portal the floating button and/or fullscreen chat
-  // window to document.body. The floating button's `open` state controls
-  // visibility — tapping it opens the chat, closing returns to the button.
   if (isMobile) {
     return createPortal(
       <>
@@ -144,9 +140,6 @@ function AIChat({ showAI, onClose }) {
       document.body
     );
   }
-
-  // On desktop (>=1024px), the floating button is hidden via CSS and the
-  // chat window is shown ONLY when showAI (App.jsx/Navbar) is true.
   if (!showAI) return null;
   return chatWindow;
 }
