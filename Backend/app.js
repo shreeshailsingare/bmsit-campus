@@ -68,3 +68,7 @@ mongoose.connect(process.env.MONGO_URL)
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+app.get("/", (req, res) => {
+  res.send("BMSIT Campus Backend Running");
+});
