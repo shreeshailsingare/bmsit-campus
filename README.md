@@ -12,8 +12,8 @@
 
 ## Live Demo
 
-- 🌐 **Frontend:** `<frontend-demo-url>`
-- 🔗 **Backend API:** `<backend-api-url>`
+- 🌐 **Frontend:** `https://bmsit-campus-platform.onrender.com`
+- 🔗 **Backend API:** `https://bmsit-campus-backend.onrender.com`
 - 🤖 **Campus AI Assistant:** Included
 
 ## Overview
