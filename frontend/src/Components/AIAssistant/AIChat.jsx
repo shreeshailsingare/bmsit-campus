@@ -66,13 +66,28 @@ function AIChat({ showAI, onClose }) {
         },
       ]);
     } catch (err) {
-      console.error(err);
+      console.error("AI request failed:", {
+        message: err.message,
+        code: err.code,
+        status: err.response?.status,
+        responseHeaders: err.response?.headers,
+        responseData: err.response?.data,
+        requestUrl: err.config?.url,
+        requestBaseURL: err.config?.baseURL,
+        stack: err.stack,
+      });
+
+      const backendError =
+        err.response?.data?.error ||
+        err.response?.data?.message ||
+        err.message ||
+        "Unable to contact AI server.";
 
       setMessages((prev) => [
         ...prev,
         {
           sender: "ai",
-          text: "❌ Unable to contact AI server.",
+          text: `❌ ${backendError}`,
         },
       ]);
     } finally {

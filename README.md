@@ -50,7 +50,7 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 - REST API development across authentication, posts, users, administrators, and AI services.
 - MongoDB database design with Mongoose models, references, embedded comments, reactions, tags, categories, and media metadata.
 - Cloudinary media management for profile images and post attachments.
-- AI-powered campus assistant using the Groq SDK and `llama-3.1-8b-instant`.
+- AI-powered campus assistant using the Groq SDK and `qwen/qwen3.8-27b`.
 - Retrieval-Augmented Generation (RAG)-style campus retrieval: relevant posts are detected, ranked, and supplied as context before response generation.
 - Role-based access control for `Admin` and `User` workflows.
 
@@ -97,7 +97,7 @@ Screenshots are not currently committed to the repository. Add captured images t
 - **Database integration:** MongoDB stores users, posts, embedded comments, reactions, tags, categories, and media metadata.
 - **Media pipeline:** Multer streams profile and post uploads to Cloudinary; uploads support images, PDFs, and common video formats.
 - **API development:** REST endpoints are organized by authentication, posts, users, administrators, and AI features.
-- **AI retrieval:** The Groq SDK uses `llama-3.1-8b-instant` with context retrieved from campus posts.
+- **AI retrieval:** The Groq SDK uses `qwen/qwen3.8-27b` with context retrieved from campus posts.
 - **Scalable separation of concerns:** Frontend components, backend routes/controllers, Mongoose models, middleware, and services are separated by responsibility.
 - **Real-time status:** No WebSocket, Server-Sent Events, or other real-time transport is implemented; feed updates occur through HTTP requests.
 
@@ -126,7 +126,7 @@ flowchart LR
 | Database | MongoDB with Mongoose 8 |
 | Authentication | JWT (`jsonwebtoken`), bcryptjs, and configured `express-session` secure cookie middleware |
 | Media Storage | Multer, `multer-storage-cloudinary`, and Cloudinary |
-| AI | Groq SDK with `llama-3.1-8b-instant`, plus MongoDB-backed campus context retrieval |
+| AI | Groq SDK with `qwen/qwen3.8-27b`, plus MongoDB-backed campus context retrieval |
 
 ## Project Structure
 
@@ -232,6 +232,7 @@ Create `Backend/.env` locally. Do not commit it.
 | `CLOUD_API_KEY` | Yes for uploads | Cloudinary API key. |
 | `CLOUD_API_SECRET` | Yes for uploads | Cloudinary API secret. |
 | `GROQ_API_KEY` | Yes for AI | Groq API key used by the campus assistant. |
+| `GROQ_MODEL` | No | Groq chat model; defaults to `qwen/qwen3.8-27b`. |
 | `VITE_API_URL` | Yes for deployed frontend | Backend base URL used by Axios in production builds. |
 
 The repository does not include an `.env.example`; create one for your deployment process without adding real credentials.
