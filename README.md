@@ -75,22 +75,22 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 - Markdown-capable AI chat interface with recent conversation history.
 - Campus AI retrieval that ranks up to five relevant MongoDB posts by category, tag, and text matches.
 
-## Screenshots
+<h2>Screenshots</h2>
 
-### Landing Page
-![Landing Page](docs/screenshots/landing-page.png)
+<h3>Landing Page</h3>
+<img src="docs/screenshots/landing-page.png" width="900">
 
-### Student Dashboard
-![Student Dashboard](docs/screenshots/student-dashboard.png)
+<h3>Campus Feed</h3>
+<img src="docs/screenshots/landing-page.png" width="900">
 
-### Create Post
-![Create Post](docs/screenshots/create-post.png)
+<h3>Student Dashboard</h3>
+<img src="docs/screenshots/student-dashboard.png" width="900">
 
-### AI Assistant
-![AI Assistant](docs/screenshots/ai-assistant.png)
+<h3>Create Post</h3>
+<img src="docs/screenshots/create-post.png" width="900">
 
-### Mobile View
-![Mobile View](docs/screenshots/mobile-view.png)
+<h3>AI Assistant</h3>
+<img src="docs/screenshots/ai-assistant.png" width="900">
 
 ## Key Technical Highlights
 
