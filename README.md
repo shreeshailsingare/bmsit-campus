@@ -90,7 +90,7 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 <img src="docs/screenshots/ai-assistant.png" width="900">
 
 <h3>mobile-view</h3>
-<img src="docs/screenshots/mobile-view.png" width="900">
+<img src="docs/screenshots/mobile-view.png" width="200" height="400">
 
 ## Key Technical Highlights
 
