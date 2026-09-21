@@ -77,18 +77,20 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 
 ## Screenshots
 
-Screenshots are not currently committed to the repository. Add captured images to a `docs/screenshots/` directory and replace these placeholders:
+### Landing Page
+![Landing Page](docs/screenshots/landing-page.png)
 
-| View | What it demonstrates | Placeholder |
-| --- | --- | --- |
-| Landing page / campus feed | The central feed for announcements, categorized posts, media, and interactions. | `![Landing Page](docs/screenshots/landing-page.png)` |
-| Student dashboard | The authenticated student experience, including profile actions, saved posts, and engagement. | `![Student Dashboard](docs/screenshots/student-dashboard.png)` |
-| Faculty or administrator dashboard | Administrator-facing content publishing and authored-post workflows. | `![Faculty Dashboard](docs/screenshots/faculty-dashboard.png)` |
-| Admin panel | Admin-controlled post creation, editing, deletion, and categorized campus communication. | `![Admin Panel](docs/screenshots/admin-panel.png)` |
-| Event management / event content | Event-related campus posts and event discovery through filters and categories. | `![Event Management](docs/screenshots/event-management.png)` |
-| Placement portal | Placement and internship updates surfaced through the campus feed and placement view. | `![Placement Portal](docs/screenshots/placement-portal.png)` |
-| Departments and clubs | Department, club, and IEEE club discovery with administrator profile pages. | `![Departments and Clubs](docs/screenshots/departments-clubs.png)` |
-| Campus AI assistant | The conversational assistant that uses relevant campus posts as context for answers. | `![Campus AI Assistant](docs/screenshots/ai-assistant.png)` |
+### Student Dashboard
+![Student Dashboard](docs/screenshots/student-dashboard.png)
+
+### Create Post
+![Create Post](docs/screenshots/create-post.png)
+
+### AI Assistant
+![AI Assistant](docs/screenshots/ai-assistant.png)
+
+### Mobile View
+![Mobile View](docs/screenshots/mobile-view.png)
 
 ## Key Technical Highlights
 
