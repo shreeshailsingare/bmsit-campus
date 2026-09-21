@@ -80,9 +80,6 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 <h3>Landing Page</h3>
 <img src="docs/screenshots/landing-page.png" width="900">
 
-<h3>Campus Feed</h3>
-<img src="docs/screenshots/landing-page.png" width="900">
-
 <h3>Student Dashboard</h3>
 <img src="docs/screenshots/student-dashboard.png" width="900">
 
@@ -91,6 +88,9 @@ BMSIT Campus centralizes these campus-related information streams into one searc
 
 <h3>AI Assistant</h3>
 <img src="docs/screenshots/ai-assistant.png" width="900">
+
+<h3>mobile-view</h3>
+<img src="docs/screenshots/mobile-view.png" width="900">
 
 ## Key Technical Highlights
 
